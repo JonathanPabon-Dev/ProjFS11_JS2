@@ -149,7 +149,7 @@
     line-height: 1.55;
     letter-spacing: 0.03em;
     text-align: justify;
-    color: black;
+    color: $black-primary;
     transition: top 250ms $cubic;
   }
   &__button-close {
@@ -191,8 +191,8 @@
     }
   }
   &__button-active {
-    color: #fff;
-    background-color: #ff6b01;
+    color: $white;
+    background-color: $red-alert-msg;
     text-align: center;
     border: 1px solid transparent;
   }
@@ -231,19 +231,19 @@
     font-weight: 500;
     line-height: 1.33;
     text-align: left;
-    color: #8c8c8c;
+    color: $gray-modal-subt;
     padding: 6px 0px;
   }
   &__text-description {
     line-height: 1.16;
-    color: black;
+    color: $black-primary;
   }
   &__text-about {
-    color: black;
+    color: $black-primary;
   }
   &__text-sipnosis {
     line-height: 1.67;
-    color: black;
+    color: $black-primary;
     align-content: justify;
   }
 }
@@ -253,8 +253,8 @@
   height: 20px;
   border-radius: 5px;
   border: none;
-  background-color: #ff6b01;
-  color: white;
+  background-color: $red-alert-msg;
+  color: $white;
   display: flex;
   transition: fill 250ms $cubic;
   justify-content: center;
@@ -280,7 +280,7 @@
     justify-content: center;
   }
   &__subtitle {
-    color: rgba(117, 117, 117, 1);
+    color: rgb(117, 117, 117);
     font-size: 16px;
     font-weight: 400;
     line-height: 1.25;
@@ -289,8 +289,8 @@
   &__item {
     width: 450px;
     height: auto;
-    background-color: rgb(255, 255, 255);
-    border: 1px solid rgb(238, 238, 238);
+    background-color: $white;
+    border: 1px solid rgb(237, 237, 237);
     border-radius: 4px;
     &:hover .gallery__text {
       top: 0;
