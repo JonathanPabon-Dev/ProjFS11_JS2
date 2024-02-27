@@ -1,0 +1,30 @@
+{
+  "name": "projfs11_js2",
+  "version": "2.0.0",
+  "description": "",
+  "homepage": "https://jonathanpabon-dev.github.io/ProjFS11_JS2",
+  "scripts": {
+    "start": "parcel src/*.html",
+    "build": "parcel build src/*.html --public-url /ProjFS11_JS2/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JonathanPabon-Dev/ProjFS11_JS2.git"
+  },
+  "keywords": [],
+  "author": "JPP",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JonathanPabon-Dev/ProjFS11_JS2/issues"
+  },
+  "dependencies": {
+    "modern-normalize": "^1.1.0"
+  },
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.6.0",
+    "parcel": "^2.6.0",
+    "parcel-reporter-clean-dist": "^1.0.4",
+    "posthtml-include": "^1.7.4"
+  },
+  "browserslist": "> 0.5%, last 2 versions, not dead"
+}
