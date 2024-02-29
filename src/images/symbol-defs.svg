@@ -1,8 +1,8 @@
 <svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <defs>
 <symbol id="filmoteka-close" viewBox="0 0 32 32">
-<path fill="none" stroke="#000" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="2.1333" d="M8.533 8.533l14.933 14.933"></path>
-<path fill="none" stroke="#000" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="2.1333" d="M8.533 23.467l14.933-14.933"></path>
+<path fill="none" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="2.1333" d="M8.533 8.533l14.933 14.933"></path>
+<path fill="none" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="2.1333" d="M8.533 23.467l14.933-14.933"></path>
 </symbol>
 <symbol id="filmoteka-film" viewBox="0 0 32 32">
 <path fill="none" stroke="#818181" style="stroke: var(--color1, #818181)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.6667" d="M26.427 2.667h-20.853c-1.605 0-2.907 1.301-2.907 2.907v20.853c0 1.605 1.301 2.907 2.907 2.907h20.853c1.605 0 2.907-1.301 2.907-2.907v-20.853c0-1.605-1.301-2.907-2.907-2.907z"></path>
@@ -22,10 +22,10 @@
 <path fill="none" stroke="#fff" style="stroke: var(--color3, #fff)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.6667" d="M28 28.001l-5.8-5.8"></path>
 </symbol>
 <symbol id="filmoteka-left-arrow" viewBox="0 0 32 32">
-<path d="M6 12H18M6 12L11 7M6 12L11 17" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M6 12H18M6 12L11 7M6 12L11 17"  stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 </symbol>
 <symbol id="filmoteka-right-arrow" viewBox="0 0 32 32">
-<path d="M6 12H18M18 12L13 7M18 12L13 17" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M6 12H18M18 12L13 7M18 12L13 17"  stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 </symbol>
 </defs>
 </svg>
