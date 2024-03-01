@@ -3,14 +3,14 @@ var goitLink = document.getElementById("goitLink");
 var modal = document.getElementById("myModal");
 var studentList = document.querySelectorAll(".student"); // Obtener todos los elementos de estudiante
 
-// Calcular el número total de páginas (asumiendo que hay 3 estudiantes por página)
-var numPages = Math.ceil(studentList.length / 3);
+// Calcular el número total de páginas (asumiendo que hay 2 estudiantes por página)
+var numPages = Math.ceil(studentList.length / 2);
 var currentPage = 1;
 
 // Mostrar los estudiantes para la página actual
 function showStudents(page) {
-  var start = (page - 1) * 3; // Índice de inicio del grupo de estudiantes para la página actual
-  var end = start + 3; // Índice final del grupo de estudiantes para la página actual
+  var start = (page - 1) * 2; // Índice de inicio del grupo de estudiantes para la página actual
+  var end = start + 2; // Índice final del grupo de estudiantes para la página actual
 
   // Ocultar todos los estudiantes
   studentList.forEach(function(student) {
@@ -50,6 +50,11 @@ document.getElementById("prevPage").onclick = function() {
   if (currentPage > 1) {
     currentPage--;
     showStudents(currentPage);
+    // Habilitar el botón "nextPage"
+    document.getElementById("nextPage").disabled = false;
+  } else {
+    // Deshabilitar el botón "prevPage"
+    document.getElementById("prevPage").disabled = true;
   }
 };
 
@@ -57,5 +62,10 @@ document.getElementById("nextPage").onclick = function() {
   if (currentPage < numPages) {
     currentPage++;
     showStudents(currentPage);
+    // Habilitar el botón "prevPage"
+    document.getElementById("prevPage").disabled = false;
+  } else {
+    // Deshabilitar el botón "nextPage"
+    document.getElementById("nextPage").disabled = true;
   }
 };
