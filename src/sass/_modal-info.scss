@@ -57,6 +57,9 @@
   &--value {
     color: $black-primary;
   }
+  &--title {
+    text-transform: uppercase;
+  }
 }
 #og-title {
   width: 120px;
@@ -81,6 +84,7 @@
   &-info {
     display: flex;
     flex-wrap: wrap;
+    align-content: flex-start;
     @media screen and(min-width:320px) {
       width: 236px;
       padding-bottom: 15px;
