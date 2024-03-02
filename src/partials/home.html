@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/1.0.0/modern-normalize.min.css"
+    />
+    <link rel="stylesheet" href="./css/main.min.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="header__container">
+        <div>
+          <svg class="header__icon" width="24" height="24">
+            <use href="./images/svg/symbol-defs.svg#filmoteka-film"></use>
+          </svg>
+          <a href="#" class="header__page-name"> Filmoteka</a>
+        </div>
+        <nav>
+          <ul class="header__list">
+            <li>
+              <a href="/home.html" class="header__items active"> Home</a>
+            </li>
+            <li>
+              <a href="/library.html" class="header__items"> My library</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <form class="form">
+        <input
+          class="header__searcher"
+          type="text"
+          name="searcher"
+          placeholder="Buscar películas"
+        />
+        <button class="form__button" type="submit">
+          <svg class="input__icon" width="12" height="12">
+            <use href="./images/svg/symbol-defs.svg#filmoteka-search"></use>
+          </svg>
+        </button>
+      </form>
+
+      <div id="searchResults"></div>
+    </header>
+  </body>
+</html>
