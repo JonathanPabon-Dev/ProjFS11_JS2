@@ -15,7 +15,7 @@ const refs = {
 };
 
 refs.openModalBtn.addEventListener('click', toggleModal);
-refs.closeModalBtn.addEventListener('click', toggleModal);
+refs.closeModalBtn.addEventListener('click', removeModal);
 window.addEventListener('keydown', event => {
   if (event.code === 'Escape') {
     removeModal();
@@ -24,9 +24,10 @@ window.addEventListener('keydown', event => {
 
 export function toggleModal(id) {
   refs.modal.classList.toggle('is-hidden');
+  if (id === 0) return;
   fetchMovieDetails(id)
     .then(response => {
-      console.log(response.genres.map(({ name }) => name));
+      console.log(response);
       refs.poster.src =
         `https://image.tmdb.org/t/p/w400${response.poster_path}` || 'none';
       refs.vote.textContent = response.vote_average || 'none';
@@ -35,11 +36,12 @@ export function toggleModal(id) {
       refs.popularity.textContent = response.popularity || 'none';
       refs.movieTitle.textContent = response.title || 'none';
       refs.sinopsis.textContent = response.overview || 'none';
-      refs.genre.textContent = response.genres.map(({ name }) => name);
+      refs.genre.textContent =
+        response.genres.map(({ name }) => name).length > 0
+          ? response.genres.map(({ name }) => name).join(', ')
+          : 'none';
     })
-    .catch(error => {
-      console.error(error);
-    });
+    .catch(error => {});
 }
 export function removeModal() {
   refs.modal.classList.add('is-hidden');
@@ -47,4 +49,4 @@ export function removeModal() {
 /* 
   poster_path: es el codigo de la imagen de poster
   enlace para llamar imagen https://image.tmdb.org/t/p/original/${poster_path}
-  */
+*/

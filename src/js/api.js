@@ -14,7 +14,7 @@ const options = {
 
 export async function fetchAllMovies() {
   try {
-    return await fetch(BASE_URL + 'trending/all/day?language=en-US', options)
+    return await fetch(BASE_URL + 'trending/movie/day?language=en-US', options)
       .then(response => response.json())
       .catch(err => console.error(err));
   } catch (error) {
