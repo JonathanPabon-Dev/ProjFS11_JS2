@@ -6,31 +6,19 @@
     <title>Page title</title>
     <link rel="stylesheet" href="./sass/index.scss" />
     <script type="module" src="./js/index.js"></script>
-    <link rel="stylesheet" href="../node_modules/notiflix/dist/notiflix-3.2.7.min.css">
-
+    <link
+      rel="stylesheet"
+      href="../node_modules/notiflix/dist/notiflix-3.2.7.min.css"
+    />
   </head>
   <body>
-    <!-- ❗️❗️❗️ Add partials like so for every page -->
     <!-- <include src="./partials/example.html"></include> -->
-    <section class="main">
-      <ul class="gallery__list list p-0" id="gallery-list">
-        <li class="gallery__item" first-modal>
-          <div class="gallery__container" data-modal-open="">
-            <img
-              class="gallery__img"
-              src="./images/pelicula1.jpg"
-              alt="pelicula"
-            />
-          </div>
-          <div class="gallery__description">
-            <h3 class="gallery__title">A FISTFUL OF LEAD</h3>
-            <p class="gallery__subtitle">Western | 2019</p>
-          </div>
-        </li>
-      </ul>
-    </section>
+    <include src="./partials/example.html"></include>
+    <!-- ❗️❗️❗️ Add partials like so for every page -->
+    <include src="./partials/footer.html"></include>
+    <!-- Contenedor para cargar el modal -->
 
-    <include src="./partials/modal-info.html"></include>
-    <script src="../node_modules/notiflix/dist/notiflix-3.2.7.min.js"></script>
+    <!-- JavaScript -->
+    <script src="./js/footer.js"></script>
   </body>
 </html>
