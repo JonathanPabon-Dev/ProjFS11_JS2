@@ -1,4 +1,4 @@
-import { fetchAllMovies, fetchSimilarMovies } from './api.js';
+import { fetchTrendMovies, fetchSimilarMovies } from './api.js';
 import { toggleModal } from './modal-info.js';
 import { renderPaginator } from './pagination.js';
 
@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', async e => {
   const galleryList = document.getElementById('gallery-list');
   const firstModal = document.querySelector('li[first-modal]');
 
-  fetchAllMovies().then(data => {
+  fetchTrendMovies().then(data => {
     firstModal.classList.add('is-hidden');
     data.results.forEach(element => {
       galleryList.innerHTML += `
