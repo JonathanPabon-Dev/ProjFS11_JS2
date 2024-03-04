@@ -46,6 +46,7 @@
 .text {
   &--inline {
     display: flex;
+    gap: 35px;
   }
   &--attr {
     width: 90px;
@@ -81,6 +82,9 @@
     overflow-x: hidden;
   }
   &-info {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
     @media screen and (min-width: 320px) {
       width: 236px;
       padding-bottom: 15px;
@@ -210,12 +214,6 @@
   display: none;
 }
 
-.info-list {
-  height: 100%;
-  display: flex;
-  list-style: none;
-  flex-direction: column;
-}
 .properties {
   display: flex;
   gap: 50px;
@@ -277,7 +275,6 @@
     display: flex;
     flex-wrap: wrap;
     gap: 30px;
-    cursor: pointer;
     justify-content: center;
   }
   &__subtitle {
@@ -307,5 +304,6 @@
   &__img {
     width: 100%;
     height: auto;
+    cursor: pointer;
   }
 }
