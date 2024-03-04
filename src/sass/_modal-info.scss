@@ -1,0 +1,309 @@
+.span {
+  width: 20px;
+  border-radius: 5px;
+  padding: 2px 8px;
+  margin: 0px 5px 0px 0px;
+  &--orange {
+    background-color: $orange-primary;
+    color: $white;
+  }
+  &--gray {
+    background-color: $gray-footer-bg;
+    color: $black-primary;
+  }
+}
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  pointer-events: all;
+  animation: bg 2s;
+}
+@keyframes bg {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.svg {
+  width: 30px;
+  height: 30px;
+
+  &--black {
+    stroke: $black-primary;
+  }
+  &:hover {
+    cursor: pointer;
+    stroke: $orange-primary;
+    transition: stroke 0.5s $cubic;
+  }
+}
+.text {
+  &--inline {
+    display: flex;
+    gap: 35px;
+  }
+  &--attr {
+    width: 90px;
+  }
+  &--rating {
+    width: 150px;
+  }
+  &--value {
+    color: $black-primary;
+  }
+  &--title {
+    text-transform: uppercase;
+  }
+}
+#og-title {
+  width: 120px;
+}
+.modal {
+  position: relative;
+  margin: auto;
+  background-color: $white;
+  display: flex;
+  justify-content: center;
+  top: 20px;
+  left: 0;
+  border-radius: 4px;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+  animation: zoom 2s;
+  @media screen and (max-width: 767px) {
+    height: 95%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+  &-info {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    @media screen and (min-width: 320px) {
+      width: 236px;
+      padding-bottom: 15px;
+    }
+    @media screen and (min-width: 768px) {
+      width: 264px;
+      padding-bottom: 0px;
+    }
+    @media screen and (min-width: 1024px) {
+      width: 396px;
+    }
+  }
+  &__container {
+    padding: 25px;
+    display: flex;
+    gap: 15px;
+    @media screen and (min-width: 320px) {
+      width: 280px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    @media screen and (min-width: 768px) {
+      flex-wrap: nowrap;
+    }
+  }
+  &__img {
+    @media screen and (min-width: 320px) {
+      width: 240px;
+    }
+    @media screen and (min-width: 768px) {
+      width: 264px;
+    }
+    @media screen and (min-width: 1024px) {
+      width: 396px;
+    }
+  }
+  &__title {
+    font-family: Roboto;
+    font-size: 30px;
+    font-weight: 500;
+    line-height: 1.17;
+    text-align: left;
+  }
+
+  &__about {
+    font-family: Roboto;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.33;
+    text-align: left;
+  }
+  &__text {
+    margin: 0;
+    border-radius: 4px;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.55;
+    letter-spacing: 0.03em;
+    text-align: justify;
+    color: black;
+    transition: top 250ms $cubic;
+  }
+  &__button-close {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    top: -4px;
+    right: 0;
+    border-color: transparent;
+    background-color: transparent;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    transition: fill 250ms $cubic;
+    z-index: 2;
+  }
+  &__button {
+    cursor: pointer;
+    color: $black-primary;
+    background-color: $white;
+    text-align: center;
+    border: 1px solid $black-primary;
+    padding: 14px 0px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.33;
+    letter-spacing: 0.06em;
+    outline: none;
+    transition: color 250ms $cubic;
+    @media screen and (min-width: 320px) {
+      width: 113px;
+    }
+    @media screen and (min-width: 768px) {
+      width: 125px;
+    }
+    @media screen and (min-width: 1024px) {
+      width: 136px;
+    }
+  }
+  &__button-active {
+    color: #fff;
+    background-color: #ff6b01;
+    text-align: center;
+    border: 1px solid transparent;
+  }
+  @media screen and (min-width: 320px) {
+    width: 280px;
+  }
+  @media screen and (min-width: 768px) {
+    width: 618px;
+  }
+  @media screen and (min-width: 1024px) {
+    width: 882px;
+  }
+}
+@keyframes zoom {
+  from {
+    scale: 0;
+  }
+  to {
+    scale: 1;
+  }
+}
+
+.is-hidden {
+  display: none;
+}
+
+.properties {
+  display: flex;
+  gap: 50px;
+  & ul {
+    list-style: none;
+  }
+  &__list {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+  &__text {
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.33;
+    text-align: left;
+    color: #8c8c8c;
+    padding: 6px 0px;
+  }
+  &__text-description {
+    line-height: 1.16;
+    color: black;
+  }
+  &__text-about {
+    color: black;
+  }
+  &__text-sipnosis {
+    line-height: 1.67;
+    color: black;
+    align-content: justify;
+  }
+}
+
+.start {
+  width: 36px;
+  height: 20px;
+  border-radius: 5px;
+  border: none;
+  background-color: #ff6b01;
+  color: white;
+  display: flex;
+  transition: fill 250ms $cubic;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-list {
+  list-style: none;
+  display: flex;
+  gap: 10px;
+}
+
+// estillos de card
+.gallery {
+  &__description {
+    padding-left: 24px;
+  }
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+  }
+  &__subtitle {
+    color: rgba(117, 117, 117, 1);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.25;
+    letter-spacing: 0.03em;
+  }
+  &__item {
+    width: 450px;
+    height: auto;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(238, 238, 238);
+    border-radius: 4px;
+    &:hover .gallery__text {
+      top: 0;
+      box-shadow: 1px 4px 6px 0px rgba(0, 0, 0, 0.16),
+        0px 4px 4px 0px rgba(0, 0, 0, 0.06), 0px 1px 1px 0px rgba(0, 0, 0, 0.12);
+    }
+  }
+  &__container {
+    position: relative;
+    overflow: hidden;
+  }
+
+  &__img {
+    width: 100%;
+    height: auto;
+    cursor: pointer;
+  }
+}

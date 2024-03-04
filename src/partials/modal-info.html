@@ -1,0 +1,70 @@
+<!-- Modal -->
+<div class="backdrop is-hidden" data-modal="">
+  <div class="modal">
+    <button class="modal__button-close" type="button" data-modal-close="">
+      <svg class="svg svg--black">
+        <use href="./images/symbol-defs.svg#filmoteka-close"></use>
+      </svg>
+    </button>
+    <div class="modal__container">
+      <div class="modal-poster">
+        <img
+          class="modal__img"
+          src="./images/pelicula1.jpg"
+          alt="pelicula"
+          id="poster"
+        />
+      </div>
+      <div class="modal-info">
+        <h2 class="text--title" id="movie-title">A FISTFUL OF LEAD</h2>
+        <ul class="properies__list list">
+          <li class="properties__text text--inline">
+            <p class="text--attr">Vote / Votes</p>
+            <p class="text--rating">
+              <span class="span span--orange" id="vote"> 7.3 </span> /
+              <span class="span span--gray" id="votes"> 1260 </span>
+            </p>
+          </li>
+          <li class="properties__text text--inline">
+            <p class="text--attr">Popularity</p>
+            <p class="text--value" id="popularity">100.2</p>
+          </li>
+          <li class="properties__text text--inline">
+            <p class="text--attr">Original Title</p>
+            <p class="text--value text--title" id="og-title">
+              A FISTFUL OF LEAD
+            </p>
+          </li>
+          <li class="properties__text text--inline">
+            <p class="text--attr">Genre</p>
+            <p class="text--value" id="genre">Western</p>
+          </li>
+        </ul>
+        <p class="properties__text properties__text-about">ABOUT</p>
+        <p class="properties__text properties__text-sipnosis" id="sinopsis">
+          Four of the West’s most infamous outlaws assemble to steal a huge
+          stash of gold from the most corrupt settlement of the gold rush towns.
+          But not all goes to plan one is killed and the other three escapes
+          with bags of gold hide out in the abandoned gold mine where they
+          happen across another gang of three – who themselves were planning to
+          hit the very same bank! As tensions rise, things go from bad to worse
+          as they realise the bags of gold are filled with lead... they’ve been
+          double crossed – but by who and how?
+        </p>
+        <ul class="btn-list">
+          <li>
+            <button
+              class="modal__button modal__button-active"
+              id="watched-list"
+            >
+              ADD TO WATCHED
+            </button>
+          </li>
+          <li>
+            <button class="modal__button" id="queue-list">ADD TO QUEUE</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
