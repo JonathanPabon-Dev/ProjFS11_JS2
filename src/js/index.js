@@ -1,5 +1,81 @@
-import { fetchAllMovies, fetchSameMovies, fetchMovieDetails } from './api.js';
+import {
+  fetchTrendMovies,
+  fetchSimilarMovies,
+  fetchMovieDetails,
+} from './api.js';
+import { renderPaginator } from './pagination.js';
 
-fetchAllMovies().then(data => console.log(data));
-fetchSameMovies('tears', 1);
-fetchMovieDetails(1217605);
+document.addEventListener('DOMContentLoaded', async e => {
+  e.preventDefault();
+  let sameMovies = [];
+  let totalPages = 0;
+  let currentPage = 1;
+
+  async function loadPage() {
+    await displayMovies(currentPage);
+    resizePaginator();
+  }
+
+  async function searchMovies(currentPage) {
+    let data = await fetchSimilarMovies('sea', currentPage).then(data => {
+      return data;
+    });
+    sameMovies = data.results;
+    totalPages = data.total_pages;
+  }
+
+  async function displayMovies(currentPage) {
+    await searchMovies(currentPage);
+    const moviesContainer = document.querySelector('.movies');
+    moviesContainer.innerHTML = '';
+    let moviesList = '';
+    sameMovies.forEach(movie => {
+      const img = movie.poster_path
+        ? `<img src="https://image.tmdb.org/t/p/original/${movie.poster_path}" width="150px">`
+        : `<img src="https://img.freepik.com/free-vector/flat-design-no-photo-sign_23-2149299706.jpg?t=st=1709528382~exp=1709531982~hmac=0bf6298109913f1b5659dfda880651f4b320452f476ddccdb5bd374a27f56044&w=826" title="Image by freepik" width="150px">`;
+
+      moviesList += `<div><span>${movie.title}</span>${img}</div>`;
+    });
+    moviesContainer.innerHTML = moviesList;
+  }
+
+  function resizePaginator() {
+    const screenWidth = window.innerWidth;
+
+    if (screenWidth >= 768) {
+      renderPaginator(totalPages, currentPage);
+    } else {
+      renderPaginator(totalPages, currentPage, true);
+    }
+    loadPaginator();
+  }
+
+  window.addEventListener('resize', resizePaginator);
+
+  function loadPaginator() {
+    document.querySelectorAll('.pg-btn').forEach(button => {
+      button.addEventListener('click', async () => {
+        if (button.id === 'prev-btn') {
+          currentPage--;
+        } else if (button.id === 'next-btn') {
+          currentPage++;
+        } else {
+          currentPage = Number(button.textContent);
+        }
+
+        await displayMovies(currentPage);
+
+        resizePaginator();
+
+        const moviesPerPage = 20;
+        console.log(
+          'Start: ' + (button.textContent - 1) * moviesPerPage,
+          'End: ' + (button.textContent * moviesPerPage - 1)
+        );
+        console.log(button);
+      });
+    });
+  }
+
+  loadPage();
+});
