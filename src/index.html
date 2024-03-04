@@ -1,20 +1,39 @@
 <!DOCTYPE html>
 <html lang="ru">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Page title</title>
     <link rel="stylesheet" href="./sass/index.scss" />
+    <link rel="stylesheet" href="./sass/cards.min.css" />
+    <link rel="stylesheet" href="./sass/modal.css" />
     <script type="module" src="./js/index.js"></script>
-  </head>
-  <body>
-    <!-- <include src="./partials/example.html"></include> -->
-    <include src="./partials/home.html"></include>
-    <!-- ❗️❗️❗️ Add partials like so for every page -->
-    <include src="./partials/footer.html"></include>
-    <!-- Contenedor para cargar el modal -->
+</head>
+
+<body>
+    <section class="movies">
+        <div id="filter-container">
+            <label for="genre-select">Filter by Genre:</label>
+            <select id="genre-select"></select>
+        </div>
+        <ul id="movie-container"></ul>
+    </section>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span id="close-modal" class="close">&times;</span>
+            <h2 id="modal-title"></h2>
+            <p id="modal-overview"></p>
+            <button id="add-to-watched">Add to Watched</button>
+            <button id="add-to-queue">Add to Queue</button>
+        </div>
+    </div>
 
     <!-- JavaScript -->
     <script src="./js/footer.js"></script>
-  </body>
+    <script src="./js/cards.js"></script>
+    <script src="./js/modal.js"></script>
+</body>
+
 </html>
