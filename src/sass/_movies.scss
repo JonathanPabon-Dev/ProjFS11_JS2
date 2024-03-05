@@ -1,6 +1,6 @@
 .movies {
   width: 1024px;
-  margin: 50px auto;
+  margin: 60px auto;
 }
 
 #movie-container {
@@ -13,20 +13,18 @@
   margin: auto;
   padding: 0;
 
-  li {
-    width: 274px;
-    height: 439px;
-  }
-
   img {
     width: 274px;
     height: 398px;
     object-fit: cover;
+    border-radius: 5px;
+    aspect-ratio: 2/3;
+    cursor: pointer;
   }
 }
 
 .movie-title {
-  margin: 0;
+  margin-top: 10px;
   color: rgb(0, 0, 0);
   text-transform: uppercase;
 }
@@ -39,7 +37,7 @@
 .movie-title,
 .release-year-genres {
   font-size: 12px;
-  font-weight: bold;
+  font-weight: 500;
   text-align: left;
   line-height: 1.33;
 }

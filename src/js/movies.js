@@ -1,27 +1,37 @@
-import { fetchTrendMovies, fetchGenres } from './api.js';
+import { fetchGenres } from './api.js';
+import { fetchTrendMovies } from './api.js';
 
-const genres = async () => {
-  let data = await fetchGenres().then(data => {
-    return data;
+let genres = [];
+
+export async function loadTrendMovies() {
+  await fetchTrendMovies()
+    .then(data => {
+      renderMovieGallery(data.results);
+    })
+    .catch(error => console.error(error));
+}
+
+export function loadWatchedMovies(moviesList) {
+  renderMovieGallery(moviesList);
+}
+
+export function loadQueueMovies(moviesList) {
+  renderMovieGallery(moviesList);
+}
+
+async function renderMovieGallery(dataMovies) {
+  await fetchGenres().then(data => {
+    genres = data.genres;
   });
-  return data.genres;
-};
-
-fetchTrendMovies()
-  .then(data => {
-    renderMovieGallery(data, genres);
-  })
-  .catch(error => console.error(error));
-
-async function renderMovieGallery(dataMovies, dataGenre) {
-  console.log(dataGenre, typeof dataGenre);
   const movieContainer = document.getElementById('movie-container');
+  movieContainer.innerHTML = '';
 
-  dataMovies.results.forEach(movie => {
+  dataMovies.forEach(movie => {
     const movieLi = document.createElement('li');
 
     const img = document.createElement('img');
     img.src = 'https://image.tmdb.org/t/p/w500' + movie.poster_path;
+    img.setAttribute('data-modal-open', movie.id);
     movieLi.appendChild(img);
 
     const title = document.createElement('p');
@@ -30,7 +40,7 @@ async function renderMovieGallery(dataMovies, dataGenre) {
     movieLi.appendChild(title);
 
     const mainGenres = movie.genre_ids.slice(0, 2).map(id => {
-      return dataGenre.find(genre => genre.id === id).name;
+      return genres.find(genre => genre.id === id).name;
     });
 
     const releaseYearAndGenres = document.createElement('p');

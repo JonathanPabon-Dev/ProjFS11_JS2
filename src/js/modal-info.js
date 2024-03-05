@@ -2,7 +2,6 @@ import { fetchMovieDetails } from './api';
 import { addToWatched, addToQueue } from './add-movie';
 
 const refs = {
-  openModalBtn: document.querySelector('[data-modal-open]'),
   closeModalBtn: document.querySelector('[data-modal-close]'),
   modal: document.querySelector('[data-modal]'),
   movieTitle: document.querySelector('#movie-title'),
@@ -23,7 +22,6 @@ const refs = {
   },
 };
 
-refs.openModalBtn.addEventListener('click', toggleModal);
 refs.closeModalBtn.addEventListener('click', removeModal);
 
 window.addEventListener('keydown', event => {

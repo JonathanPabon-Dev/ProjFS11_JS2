@@ -9,27 +9,15 @@
     <nav>
       <ul class="header__list">
         <li>
-          <a href="./index.html" class="header__items active">Home</a>
+          <a href="#" id="homeBtn" class="header__items active">Home</a>
         </li>
         <li>
-          <a href="./partials/library.html" class="header__items">My library</a>
+          <a href="#" id="libraryBtn" class="header__items">My library</a>
         </li>
       </ul>
     </nav>
   </div>
-  <form class="form">
-    <input
-      class="header__searcher"
-      type="text"
-      name="searcher"
-      placeholder="Buscar películas"
-    />
-    <button class="form__button" type="submit">
-      <svg class="input__icon" width="12" height="12">
-        <use href="./images/symbol-defs.svg#filmoteka-search"></use>
-      </svg>
-    </button>
-  </form>
 
-  <div id="searchResults"></div>
+  <include src="./partials/header-search.html"></include>
+  <include src="./partials/header-btns.html"></include>
 </header>
