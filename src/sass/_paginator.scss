@@ -6,7 +6,6 @@
   border: none;
   cursor: pointer;
   color: #000;
-  stroke: #000;
   &:hover,
   &:focus,
   &:focus-visible,
@@ -18,7 +17,6 @@
       background-color: #f7f7f7;
       cursor: default;
       color: #000;
-      stroke: #000;
     }
   }
   &__dot {
@@ -43,4 +41,9 @@
 
 .disabled {
   opacity: 0.5;
+}
+
+.arrow {
+  fill: none;
+  stroke: #000;
 }

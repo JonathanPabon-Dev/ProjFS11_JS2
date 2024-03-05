@@ -23,7 +23,7 @@ const refs = {
   },
 };
 
-refs.openModalBtn.addEventListener('click', toggleModal);
+// refs.openModalBtn.addEventListener('click', toggleModal);
 refs.closeModalBtn.addEventListener('click', removeModal);
 
 window.addEventListener('keydown', event => {

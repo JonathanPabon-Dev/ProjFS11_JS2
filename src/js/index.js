@@ -1,41 +1,43 @@
 import { fetchTrendMovies, fetchSimilarMovies } from './api.js';
-import { toggleModal } from './modal-info.js';
+// import { toggleModal } from './modal-info.js';
 import { renderPaginator } from './pagination.js';
 
-document.addEventListener('DOMContentLoaded', async e => {
+document.addEventListener('DOMContentLoaded', e => {
   e.preventDefault();
   let sameMovies = [];
   let totalPages = 0;
   let currentPage = 1;
-  const galleryList = document.getElementById('gallery-list');
-  const firstModal = document.querySelector('li[first-modal]');
 
-  fetchTrendMovies().then(data => {
-    firstModal.classList.add('is-hidden');
-    data.results.forEach(element => {
-      galleryList.innerHTML += `
-    <li class="gallery__item">
-    <div class="gallery__container" id=${element.id} data-modal-open="">
-    <img
-    class="gallery__img"
-    src="https://image.tmdb.org/t/p/original${element.poster_path}"
-    alt="${element.title}"
-    />
-    </div>
-    <div class="gallery__description">
-    <h3 class="gallery__title" style="font-style:uppercase">${element.title}</h3>
-    <p class="gallery__subtitle">${element.genre_ids} | </p>
-    </div>
-    </div>
-    </li>`;
-    });
-  });
+  loadPage();
+  // const galleryList = document.getElementById('gallery-list');
+  // const firstModal = document.querySelector('li[first-modal]');
 
-  galleryList.addEventListener('click', event => {
-    const movieId = event.target.offsetParent.id || '0';
-    if (movieId === '0') return;
-    toggleModal(movieId);
-  });
+  // fetchTrendMovies().then(data => {
+  //   firstModal.classList.add('is-hidden');
+  //   data.results.forEach(element => {
+  //     galleryList.innerHTML += `
+  //   <li class="gallery__item">
+  //   <div class="gallery__container" id=${element.id} data-modal-open="">
+  //   <img
+  //   class="gallery__img"
+  //   src="https://image.tmdb.org/t/p/original${element.poster_path}"
+  //   alt="${element.title}"
+  //   />
+  //   </div>
+  //   <div class="gallery__description">
+  //   <h3 class="gallery__title" style="font-style:uppercase">${element.title}</h3>
+  //   <p class="gallery__subtitle">${element.genre_ids} | </p>
+  //   </div>
+  //   </div>
+  //   </li>`;
+  //   });
+  // });
+
+  // galleryList.addEventListener('click', event => {
+  //   const movieId = event.target.offsetParent.id || '0';
+  //   if (movieId === '0') return;
+  //   toggleModal(movieId);
+  // });
 
   async function loadPage() {
     await displayMovies(currentPage);
@@ -43,7 +45,7 @@ document.addEventListener('DOMContentLoaded', async e => {
   }
 
   async function searchMovies(currentPage) {
-    let data = await fetchSimilarMovies('sea', currentPage).then(data => {
+    let data = await fetchSimilarMovies('furious', currentPage).then(data => {
       return data;
     });
     sameMovies = data.results;
@@ -102,6 +104,4 @@ document.addEventListener('DOMContentLoaded', async e => {
       });
     });
   }
-
-  loadPage();
 });

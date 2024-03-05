@@ -38,17 +38,20 @@ export function renderPaginator(totalPages, currentPage, mobile = false) {
       const button = document.createElement('button');
       button.textContent = '';
       button.classList.add('pg-btn');
+      button.type = 'button';
       if (item.value === 'Prev') {
         button.id = 'prev-btn';
         button.classList.add('pg-btn__arrow');
-        button.innerHTML = `<svg class="svg-close-modal">
-                              <use href="./images/symbol-defs.svg#filmoteka-left-arrow"></use>
+        button.innerHTML = `<svg class="arrow" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                            <path d="M12.6666 8H3.33325" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M7.99992 12.6667L3.33325 8.00004L7.99992 3.33337" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>`;
       } else if (item.value === 'Next') {
         button.id = 'next-btn';
         button.classList.add('pg-btn__arrow');
-        button.innerHTML = `<svg class="svg-close-modal">
-                              <use href="./images/symbol-defs.svg#filmoteka-right-arrow"></use>
+        button.innerHTML = `<svg class="arrow" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                            <path d="M3.33341 8H12.6667" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M8.00008 12.6667L12.6667 8.00004L8.00008 3.33337" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>`;
       } else {
         button.textContent = item.value;
