@@ -30,9 +30,10 @@ async function renderMovieGallery(dataMovies) {
   movieContainer.innerHTML = '';
 
   if (dataMovies.length == 0) {
-    movies.style.height = '100vh';
+    movies.classList.add('vh');
     return;
   }
+  movies.classList.remove('vh');
   dataMovies.forEach(movie => {
     const movieLi = document.createElement('li');
 
