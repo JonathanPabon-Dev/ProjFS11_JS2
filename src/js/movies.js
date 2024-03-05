@@ -1,5 +1,4 @@
-import { fetchGenres } from './api.js';
-import { fetchTrendMovies } from './api.js';
+import { fetchGenres, fetchTrendMovies } from './api.js';
 
 let genres = [];
 const movies = document.getElementById('movies');

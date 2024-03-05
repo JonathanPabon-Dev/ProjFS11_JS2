@@ -26,13 +26,16 @@
   color: $white;
   background: transparent;
   border-radius: 5px;
-  border-color: $white;
+  border: 1px solid $white;
+  box-sizing: border-box;
   cursor: pointer;
   height: 44px;
   width: 136px;
 
   &:hover,
-  &:focus {
+  &:focus,
+  &:active,
+  &--active {
     border: none;
     background-color: $orange-primary;
   }
