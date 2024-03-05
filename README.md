@@ -26,12 +26,20 @@
   }
 
 Para Pc:
+
+
 ![image](https://github.com/JonathanPabon-Dev/ProjFS11_JS2/assets/42647088/f417453f-3ff9-497f-8431-741411051378)
 
+
 Para Tablet:
+
+
 ![image](https://github.com/JonathanPabon-Dev/ProjFS11_JS2/assets/42647088/c154d25d-21a3-4205-9891-bb4ccb02ddf3)
 
+
 Para Movil:
+
+
 
 ![image](https://github.com/JonathanPabon-Dev/ProjFS11_JS2/assets/42647088/e18738e9-a488-4b20-be2a-b7cf1d73e04e)
 
