@@ -10,23 +10,25 @@
     align-items: center;
     .text_link {
       color: $gray-font;
+      text-decoration: underline;
       &:hover,
       &:focus {
         color: $orange-primary;
         transition: $transition-ease;
+        cursor: pointer;
       }
     }
     .svg-close-modal {
       vertical-align: middle;
-      width: 20px; 
+      width: 20px;
       height: auto;
       height: 12px;
-    }    
+    }
   }
 }
 
 // Estilos para el modal
-.modal {
+.modal-footer {
   display: none;
   position: fixed;
   left: 0;
@@ -50,30 +52,30 @@
     margin: 10px;
     font-weight: bold;
     font-size: 18px;
-    &:hover{
-    transform: scale(1.03);
-    transition: $transition-ease;
+    &:hover {
+      transform: scale(1.03);
+      transition: $transition-ease;
     }
   }
 }
 
 @keyframes bg-transition {
   from {
-  opacity: 0;
+    opacity: 0;
   }
   to {
-  opacity: 1;
+    opacity: 1;
   }
-};
+}
 
 @keyframes zoom {
   from {
-  scale: 0;
+    scale: 0;
   }
   to {
-  scale: 1;
+    scale: 1;
   }
-};
+}
 
 .close {
   position: absolute;
@@ -93,10 +95,10 @@
 }
 
 .gallery {
-    display: flex;
-    flex-wrap: wrap;
-    padding: 0;
-    justify-content: space-around;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+  justify-content: space-around;
 }
 
 .student {
@@ -108,7 +110,7 @@
   border-radius: 10px;
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5);
   &:hover,
-  &:focus{
+  &:focus {
     cursor: pointer;
     transform: scale(1.03);
     box-shadow: 0px 5px 10px $orange-primary;
@@ -118,47 +120,45 @@
     list-style: none;
     margin-top: 5px;
     color: $gray-font;
-  }  
+  }
   .student_image {
     width: 100%;
     height: auto;
     box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.5);
   }
-  .student_link{
+  .student_link {
     font-size: 14px;
     color: $gray-modal-subt;
     &:hover,
-    &:focus{
+    &:focus {
       color: orange;
       transition: $transition-ease;
     }
   }
 }
 
-.pagination{
-    text-align: center;
-    margin-top: 15px;
-    .pag_button{
-        cursor: pointer;
-        border: none;
-        border-radius: 10px;
-        height: 30px;
-        padding: 6px;   
-        background-color: transparent;
-        margin: 0 15px 0 15px;
-        &:hover,
-        &:focus{
-            transition: $transition-ease;
-            transform: scale(1.2);
-            color: $orange-primary;
-        }
-        &:disabled{
-          display: none;
-        }
+.pagination {
+  text-align: center;
+  margin-top: 15px;
+  .pag_button {
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+    height: 30px;
+    padding: 6px;
+    background-color: transparent;
+    margin: 0 15px 0 15px;
+    &:hover,
+    &:focus {
+      transition: $transition-ease;
+      transform: scale(1.2);
+      color: $orange-primary;
     }
+    &:disabled {
+      display: none;
+    }
+  }
 }
-
-
 
 @media screen and (min-width: 768px) {
   .modal-content {
@@ -166,5 +166,3 @@
     left: 12%;
   }
 }
-
-

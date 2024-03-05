@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Page title</title>
+    <title>Filmoteka</title>
     <link rel="stylesheet" href="./sass/index.scss" />
     <script type="module" src="./js/index.js"></script>
     <link
@@ -12,13 +12,14 @@
     />
   </head>
   <body>
-    <!-- <include src="./partials/example.html"></include> -->
-    <include src="./partials/home.html"></include>
-    <!-- ❗️❗️❗️ Add partials like so for every page -->
+    <!-- Partials -->
+    <include src="./partials/header.html"></include>
+    <include src="./partials/movies.html"></include>
     <include src="./partials/footer.html"></include>
-    <!-- Contenedor para cargar el modal -->
+    <!-- Modales -->
 
     <!-- JavaScript -->
-    <script src="./js/footer.js"></script>
+    <script type="module" src="./js/movies.js"></script>
+    <script type="module" src="./js/footer.js"></script>
   </body>
 </html>
