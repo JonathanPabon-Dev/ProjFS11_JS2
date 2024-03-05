@@ -2,6 +2,7 @@ import { fetchGenres } from './api.js';
 import { fetchTrendMovies } from './api.js';
 
 let genres = [];
+const movies = document.getElementById('movies');
 
 export async function loadTrendMovies() {
   await fetchTrendMovies()
@@ -20,12 +21,18 @@ export function loadQueueMovies(moviesList) {
 }
 
 async function renderMovieGallery(dataMovies) {
+  console.log(dataMovies.length);
+
   await fetchGenres().then(data => {
     genres = data.genres;
   });
   const movieContainer = document.getElementById('movie-container');
   movieContainer.innerHTML = '';
 
+  if (dataMovies.length == 0) {
+    movies.style.height = '100vh';
+    return;
+  }
   dataMovies.forEach(movie => {
     const movieLi = document.createElement('li');
 
