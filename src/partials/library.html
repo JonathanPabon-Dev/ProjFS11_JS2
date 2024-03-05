@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Library</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/1.0.0/modern-normalize.min.css"
+    />
+    <link rel="stylesheet" href="./css/main.min.css" />
+  </head>
+  <body>
+    <header class="header__library">
+      <div class="header__container-library">
+        <div>
+          <svg class="header__icon" width="24" height="24">
+            <use href="./images/svg/symbol-defs.svg#filmoteka-film"></use>
+          </svg>
+          <a href="#" class="header__page-name"> Filmoteka</a>
+        </div>
+        <nav>
+          <ul class="header__list">
+            <li>
+              <a href="/home.html" class="header__items"> Home</a>
+            </li>
+            <li>
+              <a href="/library.html" class="header__items active">
+                My library</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+      <ul class="library-header__buttons-list">
+        <li class="header__user-item">
+          <button name="watched" class="library-header__button" type="button">
+            Watched
+          </button>
+        </li>
+        <li class="header__user-item">
+          <button
+            name="queue"
+            class="library-header__button library-header__button--active"
+            type="button"
+          >
+            Queue
+          </button>
+        </li>
+      </ul>
+    </header>
+  </body>
+</html>
