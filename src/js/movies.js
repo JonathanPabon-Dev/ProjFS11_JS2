@@ -5,7 +5,7 @@ import { renderPaginator } from './pagination.js';
 import Notiflix from 'notiflix';
 
 let genres = [];
-const paginatorContainer = document.getElementById('pg-container');
+const paginatorContainer = document.querySelector('.pg-container');
 
 export async function loadTrendMovies() {
   showLoader();

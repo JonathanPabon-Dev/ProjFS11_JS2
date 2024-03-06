@@ -4,8 +4,8 @@ export function renderPaginator(
   moviesPerPage = 20,
   mobile = false
 ) {
-  totalPages = totalResults / moviesPerPage;
-  const paginatorContainer = document.getElementById('pg-container');
+  totalPages = Math.ceil(totalResults / moviesPerPage);
+  const paginatorContainer = document.querySelector('.pg-container');
   paginatorContainer.innerHTML = '';
 
   const startPage = totalPages > 5 ? Math.max(currentPage - 2, 1) : 1;
@@ -80,40 +80,36 @@ export function renderPaginator(
       paginatorContainer.appendChild(dot);
     }
   });
+
+  loadPaginator(currentPage, totalResults);
 }
 
 // function resizePaginator(totalPages, currentPage) {
 //   const screenWidth = window.innerWidth;
 
 //   if (screenWidth >= 768) {
-//     renderPaginator(totalPages, currentPage);
+//     renderPaginator(currentPage, totalResults, (moviesPerPage = 20));
 //   } else {
-//     renderPaginator(totalPages, currentPage, true);
+//     renderPaginator(currentPage, totalResults, (moviesPerPage = 20), true);
 //   }
 //   loadPaginator(totalPages, currentPage);
 // }
 
 // window.addEventListener('resize', resizePaginator(totalPages, currentPage));
 
-// export function loadPaginator(totalPages, currentPage) {
-//   document.querySelectorAll('.pg-btn').forEach(button => {
-//     button.addEventListener('click', async () => {
-//       if (button.id === 'prev-btn') {
-//         currentPage--;
-//       } else if (button.id === 'next-btn') {
-//         currentPage++;
-//       } else {
-//         currentPage = Number(button.textContent);
-//       }
+export function loadPaginator(currentPage, totalResults) {
+  document.querySelectorAll('.pg-btn').forEach(button => {
+    button.addEventListener('click', async () => {
+      if (button.id === 'prev-btn') {
+        currentPage--;
+      } else if (button.id === 'next-btn') {
+        currentPage++;
+      } else {
+        currentPage = Number(button.textContent);
+      }
 
-//       resizePaginator(totalPages, currentPage);
-
-//       const moviesPerPage = 20;
-//       console.log(
-//         'Start: ' + (button.textContent - 1) * moviesPerPage,
-//         'End: ' + (button.textContent * moviesPerPage - 1)
-//       );
-//       console.log(button);
-//     });
-//   });
-// }
+      renderPaginator(currentPage, totalResults);
+      console.log(button);
+    });
+  });
+}

@@ -1,9 +1,9 @@
 import Notiflix from 'notiflix';
 
-export function addToWatched(movieId) {
+export function addToWatched(movie) {
   let watchedList = getWatchedList();
-  if (!watchedList.includes(movieId)) {
-    watchedList.push(movieId);
+  if (!watchedList.includes(movie)) {
+    watchedList.push(movie);
     localStorage.setItem('watchedList', JSON.stringify(watchedList));
     Notiflix.Notify.success('Movie added to watched list');
   } else {
@@ -11,10 +11,10 @@ export function addToWatched(movieId) {
   }
 }
 
-export function addToQueue(movieId) {
+export function addToQueue(movie) {
   let queueList = getQueueList();
-  if (!queueList.includes(movieId)) {
-    queueList.push(movieId);
+  if (!queueList.includes(movie)) {
+    queueList.push(movie);
     localStorage.setItem('queueList', JSON.stringify(queueList));
     Notiflix.Notify.success('Movie added to queue list');
   } else {
