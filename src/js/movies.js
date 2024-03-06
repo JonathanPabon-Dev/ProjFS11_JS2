@@ -1,4 +1,4 @@
-import { fetchGenres, fetchTrendMovies } from './api.js';
+import { fetchGenres, fetchTrendMovies, fetchSameMovies } from './api.js';
 import { getWatchedList, getQueueList } from './add-movie.js';
 
 let genres = [];
@@ -6,6 +6,14 @@ const movies = document.getElementById('movies');
 
 export async function loadTrendMovies() {
   await fetchTrendMovies()
+    .then(data => {
+      renderMovieGallery(data.results);
+    })
+    .catch(error => console.error(error));
+}
+
+export async function loadSameMovies(query, page = 1) {
+  await fetchSameMovies(query, page)
     .then(data => {
       renderMovieGallery(data.results);
     })

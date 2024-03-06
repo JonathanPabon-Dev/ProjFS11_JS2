@@ -25,6 +25,9 @@
 }
 
 .movie-title {
+  width: 274px;
+  overflow-x: hidden;
+  text-wrap: nowrap;
   margin-top: 10px;
   color: rgb(0, 0, 0);
   text-transform: uppercase;

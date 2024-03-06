@@ -2,10 +2,12 @@ import {
   loadTrendMovies,
   loadWatchedMovies,
   loadQueueMovies,
+  loadSameMovies,
 } from './movies.js';
 import { toggleModal } from './modal-info.js';
 
 const header = document.querySelector('.header');
+const form = document.querySelector('.form');
 const homeBtn = document.querySelector('#homeBtn');
 const libraryBtn = document.querySelector('#libraryBtn');
 const headerSearch = document.querySelector('.headerSearch');
@@ -52,6 +54,13 @@ movieContainer.addEventListener('click', event => {
   const movieId = event.target.dataset.modalOpen || '0';
   if (movieId === '0') return;
   toggleModal(movieId);
+});
+
+form.addEventListener('submit', () => {
+  event.preventDefault();
+
+  const query = document.querySelector('.header__searcher').value;
+  loadSameMovies(query);
 });
 
 loadPage();
