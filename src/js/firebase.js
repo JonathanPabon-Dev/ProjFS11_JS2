@@ -89,7 +89,6 @@ const checkUserAuth = () => {
 };
 
 const createMovie = async (movieObject, list) => {
-  console.log(movieObject);
   let docRef = '';
   if (list == 1) {
     docRef = await addDoc(collection(db, 'watched'), {
@@ -120,17 +119,14 @@ const createMovie = async (movieObject, list) => {
       user_id: auth.currentUser.uid,
     });
   }
-  console.log('Document written with ID: ', docRef.id);
 };
 
 const deleteMovieWatched = async taskId => {
   await deleteDoc(doc(db, 'watched', taskId));
-  console.log('deleted');
 };
 
 const deleteMovieQueued = async taskId => {
   await deleteDoc(doc(db, 'queued', taskId));
-  console.log('deleted');
 };
 
 const getMoviesWatched = async () => {
