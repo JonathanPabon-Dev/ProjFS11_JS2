@@ -1,20 +1,23 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Filmoteka</title>
     <link rel="stylesheet" href="./sass/index.scss" />
-    <script type="module" src="./js/index.js"></script>
     <link
       rel="stylesheet"
       href="../node_modules/notiflix/dist/notiflix-3.2.7.min.css"
     />
+    <script type="module" src="./js/index.js"></script>
   </head>
   <body>
     <!-- Partials -->
     <include src="./partials/header.html"></include>
-    <include src="./partials/movies.html"></include>
+    <main class="main">
+      <include src="./partials/loader.html"></include>
+      <include src="./partials/movies.html"></include>
+    </main>
     <include src="./partials/footer.html"></include>
     <!-- Modales -->
     <include src="./partials/modal-info.html"></include>

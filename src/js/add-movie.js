@@ -1,25 +1,28 @@
 import Notiflix from 'notiflix';
 
-export function addToWatched(movieId) {
-  let watchedList = getWatchedList();
-  if (!watchedList.includes(movieId)) {
-    watchedList.push(movieId);
+export function addToWatched(movie) {
+  const watchedList = getWatchedList();
+  const findMovie =
+    watchedList.map(movie => movie).find(({ id }) => id === movie.id) || null;
+  if (findMovie === null) {
+    watchedList.push(movie);
     localStorage.setItem('watchedList', JSON.stringify(watchedList));
-    Notiflix.Notify.success('Película agregada a la lista de espera');
+    Notiflix.Notify.success('Movie added to watched list');
   } else {
-    Notiflix.Notify.warning('Esta película ya está en la lista de espera');
+    Notiflix.Notify.warning('Movie is already in the watched list');
   }
-  console.log(watchedList);
 }
 
-export function addToQueue(movieId) {
-  let queueList = getQueueList();
-  if (!queueList.includes(movieId)) {
-    queueList.push(movieId);
+export function addToQueue(movie) {
+  const queueList = getQueueList();
+  const findMovie =
+    queueList.map(movie => movie).find(({ id }) => id === movie.id) || null;
+  if (findMovie === null) {
+    queueList.push(movie);
     localStorage.setItem('queueList', JSON.stringify(queueList));
-    Notiflix.Notify.success('Película agregada a la lista de espera');
+    Notiflix.Notify.success('Movie added to queue list');
   } else {
-    Notiflix.Notify.warning('Esta película ya está en la lista de espera');
+    Notiflix.Notify.warning('Movie is already in the queue list');
   }
 }
 

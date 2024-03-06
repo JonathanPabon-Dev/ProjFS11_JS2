@@ -21,11 +21,13 @@
 <path fill="none"  style="stroke: var(--color3, #fff)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.6667" d="M14.667 25.333c5.891 0 10.667-4.776 10.667-10.667s-4.776-10.667-10.667-10.667c-5.891 0-10.667 4.776-10.667 10.667s4.776 10.667 10.667 10.667z"></path>
 <path fill="none"  style="stroke: var(--color3, #fff)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.6667" d="M28 28.001l-5.8-5.8"></path>
 </symbol>
-<symbol id="filmoteka-left-arrow" viewBox="0 0 32 32">
-<path d="M6 12H18M6 12L11 7M6 12L11 17"  stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<symbol id="filmoteka-left-arrow" viewBox="0 0 16 16">
+<path fill="none" d="M12.6666 8H3.33325"/>
+<path fill="none" d="M7.99992 12.6667L3.33325 8.00004L7.99992 3.33337"/>
 </symbol>
-<symbol id="filmoteka-right-arrow" viewBox="0 0 32 32">
-<path d="M6 12H18M18 12L13 7M18 12L13 17"  stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<symbol id="filmoteka-right-arrow" viewBox="0 0 16 16">
+<path fill="none" d="M3.33341 8H12.6667"/>
+<path fill="none" d="M8.00008 12.6667L12.6667 8.00004L8.00008 3.33337"/>
 </symbol>
 </defs>
 </svg>
