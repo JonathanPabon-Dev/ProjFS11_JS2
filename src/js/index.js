@@ -5,13 +5,9 @@ import {
   loadSameMovies,
 } from './movies.js';
 import { toggleModal } from './modal-info.js';
-import { renderPaginator } from './pagination.js';
 
 document.addEventListener('DOMContentLoaded', e => {
   e.preventDefault();
-  let sameMovies = [];
-  let totalPages = 0;
-  let currentPage = 1;
   const header = document.querySelector('.header');
   const form = document.querySelector('.form');
   const homeBtn = document.querySelector('#homeBtn');
@@ -21,6 +17,8 @@ document.addEventListener('DOMContentLoaded', e => {
   const watchedBtn = document.querySelector('#watched-btn');
   const queueBtn = document.querySelector('#queue-btn');
   const movieContainer = document.querySelector('#movie-container');
+
+  loadPage();
 
   function loadPage() {
     loadTrendMovies();
@@ -39,6 +37,8 @@ document.addEventListener('DOMContentLoaded', e => {
     header.classList.add('header-library');
     libraryBtn.classList.add('active');
     homeBtn.classList.remove('active');
+    watchedBtn.classList.add('library-header__button--active');
+    queueBtn.classList.remove('library-header__button--active');
     headerSearch.classList.add('is-hidden');
     headerBtns.classList.remove('is-hidden');
     loadWatchedMovies();
@@ -68,44 +68,4 @@ document.addEventListener('DOMContentLoaded', e => {
     const query = document.querySelector('.header__searcher').value;
     loadSameMovies(query);
   });
-
-  loadPage();
-
-  function resizePaginator() {
-    const screenWidth = window.innerWidth;
-
-    if (screenWidth >= 768) {
-      renderPaginator(totalPages, currentPage);
-    } else {
-      renderPaginator(totalPages, currentPage, true);
-    }
-    loadPaginator();
-  }
-
-  window.addEventListener('resize', resizePaginator);
-
-  function loadPaginator() {
-    document.querySelectorAll('.pg-btn').forEach(button => {
-      button.addEventListener('click', async () => {
-        if (button.id === 'prev-btn') {
-          currentPage--;
-        } else if (button.id === 'next-btn') {
-          currentPage++;
-        } else {
-          currentPage = Number(button.textContent);
-        }
-
-        await displayMovies(currentPage);
-
-        resizePaginator();
-
-        const moviesPerPage = 20;
-        console.log(
-          'Start: ' + (button.textContent - 1) * moviesPerPage,
-          'End: ' + (button.textContent * moviesPerPage - 1)
-        );
-        console.log(button);
-      });
-    });
-  }
 });

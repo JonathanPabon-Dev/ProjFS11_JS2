@@ -1,7 +1,11 @@
 .movies {
   width: 1024px;
   margin: 60px auto;
-  min-height: calc(100vh - 427px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
 }
 
 #movie-container {
@@ -25,21 +29,19 @@
 }
 
 .movie-title {
-  width: 274px;
-  overflow-x: hidden;
-  text-wrap: nowrap;
   margin-top: 10px;
-  color: rgb(0, 0, 0);
+  color: $black-primary;
   text-transform: uppercase;
 }
 
 .release-year-genres {
   margin-top: 0;
-  color: rgb(255, 107, 8);
+  color: $orange-primary;
 }
 
 .movie-title,
 .release-year-genres {
+  width: 274px;
   font-size: 12px;
   font-weight: 500;
   text-align: left;

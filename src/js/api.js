@@ -22,7 +22,7 @@ export async function fetchTrendMovies() {
   }
 }
 
-export async function fetchSimilarMovies(q, page = 1) {
+export async function fetchSameMovies(q, page = 1) {
   try {
     let params = new URLSearchParams({
       query: q,

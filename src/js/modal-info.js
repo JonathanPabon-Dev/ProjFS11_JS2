@@ -3,23 +3,27 @@ import { addToWatched, addToQueue } from './add-movie';
 
 class movieObject {
   constructor(
-    poster,
-    movietitle,
-    vote,
-    votes,
-    ogTitle,
+    id,
+    poster_path,
+    title,
+    vote_average,
+    vote_count,
+    original_title,
     popularity,
-    sinopsis,
-    genre
+    overview,
+    genre_ids,
+    release_date
   ) {
-    this.poster = poster;
-    this.movieTitle = movietitle;
-    this.vote = vote;
-    this.votes = votes;
-    this.ogTitle = ogTitle;
+    this.id = id;
+    this.poster_path = poster_path;
+    this.title = title;
+    this.vote_average = vote_average;
+    this.vote_count = vote_count;
+    this.original_title = original_title;
     this.popularity = popularity;
-    this.sinopsis = sinopsis;
-    this.genre = genre;
+    this.overview = overview;
+    this.genre_ids = genre_ids;
+    this.release_date = release_date;
   }
 }
 
@@ -73,6 +77,7 @@ export function toggleModal(id) {
       refs.btnWatched.value = response.id;
       refs.btnQueued.value = response.id;
       refs.movie = new movieObject(
+        id,
         `https://image.tmdb.org/t/p/w400${response.poster_path}`,
         response.title,
         response.vote_average,
@@ -80,7 +85,8 @@ export function toggleModal(id) {
         response.original_title,
         response.popularity,
         response.overview,
-        response.genres.map(({ name }) => name)
+        response.genres.map(({ id }) => id),
+        response.release_date
       );
     })
     .catch(error => console.log(error));
