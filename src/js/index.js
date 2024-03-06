@@ -82,6 +82,12 @@ document.addEventListener('DOMContentLoaded', e => {
       libraryBtn.classList.add('is-hidden');
       gBtn.classList.remove('is-hidden');
       logOutBtn.classList.add('is-hidden');
+      header.classList.remove('header-library');
+      homeBtn.classList.add('active');
+      libraryBtn.classList.remove('active');
+      headerBtns.classList.add('is-hidden');
+      headerSearch.classList.remove('is-hidden');
+      loadTrendMovies();
     }
   });
 });
