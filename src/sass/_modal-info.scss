@@ -115,6 +115,7 @@
     }
   }
   &__img {
+    aspect-ratio: 2 / 3;
     @media screen and (min-width: 320px) {
       width: 240px;
     }
