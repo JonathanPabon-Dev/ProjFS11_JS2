@@ -1,6 +1,28 @@
 import { fetchMovieDetails } from './api';
 import { addToWatched, addToQueue } from './add-movie';
 
+class movieObject {
+  constructor(
+    poster,
+    movietitle,
+    vote,
+    votes,
+    ogTitle,
+    popularity,
+    sinopsis,
+    genre
+  ) {
+    this.poster = poster;
+    this.movieTitle = movietitle;
+    this.vote = vote;
+    this.votes = votes;
+    this.ogTitle = ogTitle;
+    this.popularity = popularity;
+    this.sinopsis = sinopsis;
+    this.genre = genre;
+  }
+}
+
 const refs = {
   closeModalBtn: document.querySelector('[data-modal-close]'),
   modal: document.querySelector('[data-modal]'),
@@ -14,11 +36,12 @@ const refs = {
   poster: document.querySelector('#poster'),
   btnWatched: document.querySelector('#watched-list'),
   btnQueued: document.querySelector('#queue-list'),
-  addIdToWatched: event => {
-    addToWatched(event.target.value);
+  movie: '',
+  addIdToWatched: () => {
+    addToWatched(refs.movie);
   },
-  addIdToQueue: event => {
-    addToQueue(event.target.value);
+  addIdToQueue: () => {
+    addToQueue(refs.movie);
   },
 };
 
@@ -49,6 +72,16 @@ export function toggleModal(id) {
           : 'none';
       refs.btnWatched.value = response.id;
       refs.btnQueued.value = response.id;
+      refs.movie = new movieObject(
+        `https://image.tmdb.org/t/p/w400${response.poster_path}`,
+        response.title,
+        response.vote_average,
+        response.vote_count,
+        response.original_title,
+        response.popularity,
+        response.overview,
+        response.genres.map(({ name }) => name)
+      );
     })
     .catch(error => console.log(error));
 
@@ -60,6 +93,7 @@ refs.modal.addEventListener('click', event => {
   if (event.target.className !== 'backdrop') return;
   removeModal();
 });
+
 export function removeModal() {
   refs.modal.classList.add('is-hidden');
   refs.btnWatched.removeEventListener('click', refs.addIdToWatched);
