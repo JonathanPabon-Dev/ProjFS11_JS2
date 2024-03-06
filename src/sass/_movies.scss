@@ -29,13 +29,13 @@
   overflow-x: hidden;
   text-wrap: nowrap;
   margin-top: 10px;
-  color: rgb(0, 0, 0);
+  color: $black-primary;
   text-transform: uppercase;
 }
 
 .release-year-genres {
   margin-top: 0;
-  color: rgb(255, 107, 8);
+  color: $orange-primary;
 }
 
 .movie-title,

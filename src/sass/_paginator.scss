@@ -2,21 +2,21 @@
   width: 40px;
   height: 40px;
   border-radius: 5px;
-  background-color: #fff;
+  background-color: $white;
   border: none;
   cursor: pointer;
-  color: #000;
+  color: $black-primary;
   &:hover,
   &:focus,
   &:focus-visible,
   &:focus-within {
-    background-color: #ff6b08;
-    color: #fff;
-    stroke: #fff;
+    background-color: $orange-primary;
+    color: $white;
+    stroke: $white;
     &.disabled {
-      background-color: #f7f7f7;
+      background-color: $gray-footer-bg;
       cursor: default;
-      color: #000;
+      color: $black-primary;
     }
   }
   &__dot {
@@ -26,17 +26,17 @@
     &:focus-visible,
     &:focus-within {
       background-color: transparent !important;
-      color: #000;
+      color: $black-primary;
     }
   }
   &__arrow {
-    background-color: #f7f7f7;
+    background-color: $gray-footer-bg;
   }
 }
 
 .pg-active {
-  background-color: #ff6b08;
-  color: #fff;
+  background-color: $orange-primary;
+  color: $white;
 }
 
 .disabled {
@@ -45,5 +45,5 @@
 
 .arrow {
   fill: none;
-  stroke: #000;
+  stroke: $black-primary;
 }
