@@ -1,4 +1,5 @@
 import { fetchGenres, fetchTrendMovies } from './api.js';
+import { getWatchedList, getQueueList } from './add-movie.js';
 
 let genres = [];
 const movies = document.getElementById('movies');
@@ -11,28 +12,29 @@ export async function loadTrendMovies() {
     .catch(error => console.error(error));
 }
 
-export function loadWatchedMovies(moviesList) {
-  renderMovieGallery(moviesList);
+export function loadWatchedMovies() {
+  const watchedList = getWatchedList();
+  if (watchedList.length === 0) {
+    alert('No watched movies found!');
+  }
+  renderMovieGallery(watchedList);
 }
 
-export function loadQueueMovies(moviesList) {
-  renderMovieGallery(moviesList);
+export function loadQueueMovies() {
+  const queueList = getQueueList();
+  if (queueList.length === 0) {
+    alert('No queue movies found!');
+  }
+  renderMovieGallery(queueList);
 }
 
 async function renderMovieGallery(dataMovies) {
-  console.log(dataMovies.length);
-
   await fetchGenres().then(data => {
     genres = data.genres;
   });
   const movieContainer = document.getElementById('movie-container');
   movieContainer.innerHTML = '';
 
-  if (dataMovies.length == 0) {
-    movies.classList.add('vh');
-    return;
-  }
-  movies.classList.remove('vh');
   dataMovies.forEach(movie => {
     const movieLi = document.createElement('li');
 

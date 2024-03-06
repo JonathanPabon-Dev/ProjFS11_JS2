@@ -33,19 +33,19 @@ libraryBtn.addEventListener('click', () => {
   homeBtn.classList.remove('active');
   headerSearch.classList.add('is-hidden');
   headerBtns.classList.remove('is-hidden');
-  loadWatchedMovies([]);
+  loadWatchedMovies();
 });
 
 watchedBtn.addEventListener('click', () => {
   watchedBtn.classList.add('library-header__button--active');
   queueBtn.classList.remove('library-header__button--active');
-  loadWatchedMovies([]);
+  loadWatchedMovies();
 });
 
 queueBtn.addEventListener('click', () => {
   queueBtn.classList.add('library-header__button--active');
   watchedBtn.classList.remove('library-header__button--active');
-  loadQueueMovies([]);
+  loadQueueMovies();
 });
 
 movieContainer.addEventListener('click', event => {

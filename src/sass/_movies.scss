@@ -1,6 +1,7 @@
 .movies {
   width: 1024px;
   margin: 60px auto;
+  min-height: calc(100vh - 427px);
 }
 
 #movie-container {
