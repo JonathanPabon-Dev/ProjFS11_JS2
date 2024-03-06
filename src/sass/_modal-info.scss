@@ -201,7 +201,7 @@
   }
   &__button-active {
     color: $white;
-    background-color: $red-alert-msg;
+    background-color: $orange-primary;
     text-align: center;
     border: 1px solid transparent;
   }
@@ -275,46 +275,4 @@
   display: flex;
   flex-direction: row;
   gap: 15px;
-}
-
-// estillos de card
-.gallery {
-  &__description {
-    padding-left: 24px;
-  }
-  &__list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
-    justify-content: center;
-  }
-  &__subtitle {
-    color: rgb(117, 117, 117);
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 1.25;
-    letter-spacing: 0.03em;
-  }
-  &__item {
-    width: 450px;
-    height: auto;
-    background-color: $white;
-    border: 1px solid rgb(237, 237, 237);
-    border-radius: 4px;
-    &:hover .gallery__text {
-      top: 0;
-      box-shadow: 1px 4px 6px 0px rgba(0, 0, 0, 0.16),
-        0px 4px 4px 0px rgba(0, 0, 0, 0.06), 0px 1px 1px 0px rgba(0, 0, 0, 0.12);
-    }
-  }
-  &__container {
-    position: relative;
-    overflow: hidden;
-  }
-
-  &__img {
-    width: 100%;
-    height: auto;
-    cursor: pointer;
-  }
 }
