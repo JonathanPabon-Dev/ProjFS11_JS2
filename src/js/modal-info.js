@@ -54,7 +54,9 @@ window.addEventListener('keydown', event => {
 });
 
 export function toggleModal(id) {
-  refs.modal.classList.toggle('is-hidden');
+  refs.modal.classList.remove('is-hidden');
+  refs.modal.classList.add('flex-modal');
+
   fetchMovieDetails(id)
     .then(response => {
       if (response.poster_path !== null) {
@@ -92,12 +94,13 @@ export function toggleModal(id) {
   refs.btnQueued.addEventListener('click', refs.addIdToQueue);
 }
 refs.modal.addEventListener('click', event => {
-  if (event.target.className !== 'backdrop') return;
+  if (event.target.className !== 'backdrop flex-modal') return;
   removeModal();
 });
 
 export function removeModal() {
   refs.modal.classList.add('is-hidden');
+  refs.modal.classList.remove('flex-modal');
   refs.btnWatched.removeEventListener('click', refs.addIdToWatched);
   refs.btnQueued.removeEventListener('click', refs.addIdToQueue);
 }
