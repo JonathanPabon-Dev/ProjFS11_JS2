@@ -45,6 +45,20 @@ span.onclick = function() {
   modal.style.display = "none";
 }
 
+// Cerrar el modal cuando se hace clic fuera de él
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+// Cerrar el modal cuando se presiona la tecla Escape
+window.onkeydown = function(event) {
+  if (event.key === "Escape") {
+    modal.style.display = "none";
+  }
+}
+
 // Manejar clics en los botones de paginación
 document.getElementById("prevPage").onclick = function() {
   if (currentPage > 1) {
