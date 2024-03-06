@@ -46,7 +46,12 @@
 .text {
   &--inline {
     display: flex;
-    gap: 35px;
+    @media screen and (min-width: 320px) {
+      gap: 39px;
+    }
+    @media screen and (min-width: 1024px) {
+      gap: 83px;
+    }
   }
   &--attr {
     width: 90px;
@@ -70,14 +75,14 @@
   background-color: $white;
   display: flex;
   justify-content: center;
-  top: 20px;
+  top: 16%;
   left: 0;
   border-radius: 4px;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 2px 1px rgba(0, 0, 0, 0.2);
   animation: zoom 2s;
   @media screen and (max-width: 767px) {
-    height: 95%;
+    height: 80%;
     overflow-y: scroll;
     overflow-x: hidden;
   }
@@ -86,8 +91,11 @@
     flex-direction: column;
     justify-content: space-between;
     align-content: flex-start;
-    ul {
+    .info-list {
       list-style: none;
+      &__item {
+        margin-bottom: 20px;
+      }
     }
     @media screen and (min-width: 320px) {
       width: 236px;
@@ -102,20 +110,25 @@
     }
   }
   &__container {
-    padding: 25px;
+    padding: 50px 30px;
     display: flex;
-    gap: 15px;
+    gap: 30px;
     @media screen and (min-width: 320px) {
       width: 280px;
       flex-wrap: wrap;
       justify-content: center;
     }
     @media screen and (min-width: 768px) {
+      width: 618px;
+      flex-wrap: nowrap;
+    }
+    @media screen and (min-width: 1024px) {
+      width: 882px;
       flex-wrap: nowrap;
     }
   }
   &__img {
-    aspect-ratio: 2 / 3;
+    border-radius: 5px;
     @media screen and (min-width: 320px) {
       width: 240px;
     }
@@ -156,8 +169,8 @@
     position: absolute;
     width: 30px;
     height: 30px;
-    top: -4px;
-    right: 0;
+    top: 10px;
+    right: 10px;
     border-color: transparent;
     background-color: transparent;
     display: flex;
@@ -265,7 +278,7 @@
   list-style: none;
   display: flex;
   flex-direction: row;
-  gap: 10px;
+  gap: 15px;
 }
 
 // estillos de card

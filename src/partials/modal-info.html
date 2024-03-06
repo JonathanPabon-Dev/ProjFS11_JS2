@@ -1,26 +1,26 @@
 <!-- Modal -->
 <div class="backdrop is-hidden" data-modal="">
   <div class="modal">
-    <button class="modal__button-close" type="button" data-modal-close="">
-      <svg class="svg svg--black">
-        <use href="./images/symbol-defs.svg#filmoteka-close"></use>
-      </svg>
-    </button>
     <div class="modal__container">
+      <button class="modal__button-close" type="button" data-modal-close="">
+        <svg class="svg svg--black">
+          <use href="./images/symbol-defs.svg#filmoteka-close"></use>
+        </svg>
+      </button>
       <div class="modal-poster">
         <img
           class="modal__img"
           src="./images/not-found.jpg"
-          alt="pelicula not found"
+          alt="pelicula"
           id="poster"
         />
       </div>
       <div class="modal-info">
-        <ul>
-          <li>
+        <ul class="info-list">
+          <li class="info-list__item">
             <h2 class="text--title" id="movie-title">A FISTFUL OF LEAD</h2>
           </li>
-          <li>
+          <li class="info-list__item">
             <ul class="properies__list list">
               <li class="properties__text text--inline">
                 <p class="text--attr">Vote / Votes</p>
@@ -45,7 +45,7 @@
               </li>
             </ul>
           </li>
-          <li>
+          <li class="info-list__item">
             <p class="properties__text properties__text-about">ABOUT</p>
             <p class="properties__text properties__text-sipnosis" id="sinopsis">
               Four of the West’s most infamous outlaws assemble to steal a huge
@@ -58,19 +58,22 @@
               with lead... they’ve been double crossed – but by who and how?
             </p>
           </li>
-          <li></li>
-        </ul>
-        <ul class="btn-list">
-          <li>
-            <button
-              class="modal__button modal__button-active"
-              id="watched-list"
-            >
-              ADD TO WATCHED
-            </button>
-          </li>
-          <li>
-            <button class="modal__button" id="queue-list">ADD TO QUEUE</button>
+          <li class="info-list__item--action-btns">
+            <ul class="btn-list">
+              <li>
+                <button
+                  class="modal__button modal__button-active"
+                  id="watched-list"
+                >
+                  ADD TO WATCHED
+                </button>
+              </li>
+              <li>
+                <button class="modal__button" id="queue-list">
+                  ADD TO QUEUE
+                </button>
+              </li>
+            </ul>
           </li>
         </ul>
       </div>

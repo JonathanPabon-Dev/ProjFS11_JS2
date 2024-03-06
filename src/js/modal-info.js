@@ -57,9 +57,11 @@ export function toggleModal(id) {
   refs.modal.classList.toggle('is-hidden');
   fetchMovieDetails(id)
     .then(response => {
-      refs.poster.src =
-        `https://image.tmdb.org/t/p/w400${response.poster_path}` ||
-        '../images/not-found.jpg';
+      if (response.poster_path !== null) {
+        refs.poster.src = `https://image.tmdb.org/t/p/w400${response.poster_path}`;
+      } else {
+        refs.poster.src = new URL('../images/not-found.jpg', import.meta.url);
+      }
       refs.vote.textContent = response.vote_average || 'none';
       refs.votes.textContent = response.vote_count || 'none';
       refs.ogTitle.textContent = response.original_title || 'none';
