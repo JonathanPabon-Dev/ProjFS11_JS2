@@ -58,12 +58,16 @@ window.addEventListener('keydown', event => {
 });
 
 export function toggleModal(id) {
-  refs.modal.classList.toggle('is-hidden');
+  refs.modal.classList.remove('is-hidden');
+  refs.modal.classList.add('flex-modal');
+
   fetchMovieDetails(id)
     .then(response => {
-      refs.poster.src =
-        `https://image.tmdb.org/t/p/w400${response.poster_path}` ||
-        '../images/not-found.jpg';
+      if (response.poster_path !== null) {
+        refs.poster.src = `https://image.tmdb.org/t/p/w400${response.poster_path}`;
+      } else {
+        refs.poster.src = new URL('../images/not-found.jpg', import.meta.url);
+      }
       refs.vote.textContent = response.vote_average || 'none';
       refs.votes.textContent = response.vote_count || 'none';
       refs.ogTitle.textContent = response.original_title || 'none';
@@ -96,12 +100,13 @@ export function toggleModal(id) {
   refs.btnQueued.addEventListener('click', refs.addIdToQueue);
 }
 refs.modal.addEventListener('click', event => {
-  if (event.target.className !== 'backdrop') return;
+  if (event.target.className !== 'backdrop flex-modal') return;
   removeModal();
 });
 
 export function removeModal() {
   refs.modal.classList.add('is-hidden');
+  refs.modal.classList.remove('flex-modal');
   refs.btnWatched.removeEventListener('click', refs.addIdToWatched);
   refs.btnQueued.removeEventListener('click', refs.addIdToQueue);
 }
