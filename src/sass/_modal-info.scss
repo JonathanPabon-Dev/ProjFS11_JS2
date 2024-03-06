@@ -83,8 +83,12 @@
   }
   &-info {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-between;
     align-content: flex-start;
+    ul {
+      list-style: none;
+    }
     @media screen and (min-width: 320px) {
       width: 236px;
       padding-bottom: 15px;
@@ -210,10 +214,6 @@
   }
 }
 
-.is-hidden {
-  display: none;
-}
-
 .properties {
   display: flex;
   gap: 50px;
@@ -263,6 +263,7 @@
 .btn-list {
   list-style: none;
   display: flex;
+  flex-direction: row;
   gap: 10px;
 }
 

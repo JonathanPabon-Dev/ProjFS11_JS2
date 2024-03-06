@@ -1,5 +1,10 @@
-import { fetchTrendMovies, fetchSimilarMovies } from './api.js';
-// import { toggleModal } from './modal-info.js';
+import {
+  loadTrendMovies,
+  loadWatchedMovies,
+  loadQueueMovies,
+  loadSameMovies,
+} from './movies.js';
+import { toggleModal } from './modal-info.js';
 import { renderPaginator } from './pagination.js';
 
 document.addEventListener('DOMContentLoaded', e => {
@@ -7,65 +12,64 @@ document.addEventListener('DOMContentLoaded', e => {
   let sameMovies = [];
   let totalPages = 0;
   let currentPage = 1;
+  const header = document.querySelector('.header');
+  const form = document.querySelector('.form');
+  const homeBtn = document.querySelector('#homeBtn');
+  const libraryBtn = document.querySelector('#libraryBtn');
+  const headerSearch = document.querySelector('.headerSearch');
+  const headerBtns = document.querySelector('.headerBtns');
+  const watchedBtn = document.querySelector('#watched-btn');
+  const queueBtn = document.querySelector('#queue-btn');
+  const movieContainer = document.querySelector('#movie-container');
+
+  function loadPage() {
+    loadTrendMovies();
+  }
+
+  homeBtn.addEventListener('click', () => {
+    header.classList.remove('header-library');
+    homeBtn.classList.add('active');
+    libraryBtn.classList.remove('active');
+    headerBtns.classList.add('is-hidden');
+    headerSearch.classList.remove('is-hidden');
+    loadTrendMovies();
+  });
+
+  libraryBtn.addEventListener('click', () => {
+    header.classList.add('header-library');
+    libraryBtn.classList.add('active');
+    homeBtn.classList.remove('active');
+    headerSearch.classList.add('is-hidden');
+    headerBtns.classList.remove('is-hidden');
+    loadWatchedMovies();
+  });
+
+  watchedBtn.addEventListener('click', () => {
+    watchedBtn.classList.add('library-header__button--active');
+    queueBtn.classList.remove('library-header__button--active');
+    loadWatchedMovies();
+  });
+
+  queueBtn.addEventListener('click', () => {
+    queueBtn.classList.add('library-header__button--active');
+    watchedBtn.classList.remove('library-header__button--active');
+    loadQueueMovies();
+  });
+
+  movieContainer.addEventListener('click', event => {
+    const movieId = event.target.dataset.modalOpen || '0';
+    if (movieId === '0') return;
+    toggleModal(movieId);
+  });
+
+  form.addEventListener('submit', () => {
+    event.preventDefault();
+
+    const query = document.querySelector('.header__searcher').value;
+    loadSameMovies(query);
+  });
 
   loadPage();
-  // const galleryList = document.getElementById('gallery-list');
-  // const firstModal = document.querySelector('li[first-modal]');
-
-  // fetchTrendMovies().then(data => {
-  //   firstModal.classList.add('is-hidden');
-  //   data.results.forEach(element => {
-  //     galleryList.innerHTML += `
-  //   <li class="gallery__item">
-  //   <div class="gallery__container" id=${element.id} data-modal-open="">
-  //   <img
-  //   class="gallery__img"
-  //   src="https://image.tmdb.org/t/p/original${element.poster_path}"
-  //   alt="${element.title}"
-  //   />
-  //   </div>
-  //   <div class="gallery__description">
-  //   <h3 class="gallery__title" style="font-style:uppercase">${element.title}</h3>
-  //   <p class="gallery__subtitle">${element.genre_ids} | </p>
-  //   </div>
-  //   </div>
-  //   </li>`;
-  //   });
-  // });
-
-  // galleryList.addEventListener('click', event => {
-  //   const movieId = event.target.offsetParent.id || '0';
-  //   if (movieId === '0') return;
-  //   toggleModal(movieId);
-  // });
-
-  async function loadPage() {
-    await displayMovies(currentPage);
-    resizePaginator();
-  }
-
-  async function searchMovies(currentPage) {
-    let data = await fetchSimilarMovies('furious', currentPage).then(data => {
-      return data;
-    });
-    sameMovies = data.results;
-    totalPages = data.total_pages;
-  }
-
-  async function displayMovies(currentPage) {
-    await searchMovies(currentPage);
-    const moviesContainer = document.querySelector('.movies');
-    moviesContainer.innerHTML = '';
-    let moviesList = '';
-    sameMovies.forEach(movie => {
-      const img = movie.poster_path
-        ? `<img src="https://image.tmdb.org/t/p/original/${movie.poster_path}" width="150px">`
-        : `<img src="https://img.freepik.com/free-vector/flat-design-no-photo-sign_23-2149299706.jpg?t=st=1709528382~exp=1709531982~hmac=0bf6298109913f1b5659dfda880651f4b320452f476ddccdb5bd374a27f56044&w=826" title="Image by freepik" width="150px">`;
-
-      moviesList += `<div><span>${movie.title}</span>${img}</div>`;
-    });
-    moviesContainer.innerHTML = moviesList;
-  }
 
   function resizePaginator() {
     const screenWidth = window.innerWidth;

@@ -1,4 +1,3 @@
-const API_KEY = '552adb2d24e642063babc241656f1191';
 const API_ACCESS_TOKEN =
   'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1NTJhZGIyZDI0ZTY0MjA2M2JhYmMyNDE2NTZmMTE5MSIsInN1YiI6IjY1ZGQ0ZDVlZGNiNmEzMDE4NTg1YjBkZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.ltWwgOGVxJr4cJ0XudTwZnS_NTOZbUx4iZEkiQDdqbs';
 
@@ -41,6 +40,17 @@ export async function fetchSimilarMovies(q, page = 1) {
 export async function fetchMovieDetails(id) {
   try {
     return await fetch(BASE_URL + 'movie/' + id, options)
+      .then(response => response.json())
+      .catch(err => console.error(err));
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+}
+
+export async function fetchGenres() {
+  try {
+    return fetch(BASE_URL + 'genre/movie/list', options)
       .then(response => response.json())
       .catch(err => console.error(err));
   } catch (error) {

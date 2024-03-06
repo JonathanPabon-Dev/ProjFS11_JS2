@@ -6,9 +6,11 @@
     'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
     sans-serif;
 }
-body {
-  background-color: $gray-font;
+
+.is-hidden {
+  display: none;
 }
-.svg-close-modal-bk {
-  background-color: $black-primary;
+
+.vh {
+  height: 100vh;
 }
