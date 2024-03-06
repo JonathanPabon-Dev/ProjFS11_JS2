@@ -1,0 +1,49 @@
+.pg-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 5px;
+  background-color: #fff;
+  border: none;
+  cursor: pointer;
+  color: #000;
+  &:hover,
+  &:focus,
+  &:focus-visible,
+  &:focus-within {
+    background-color: #ff6b08;
+    color: #fff;
+    stroke: #fff;
+    &.disabled {
+      background-color: #f7f7f7;
+      cursor: default;
+      color: #000;
+    }
+  }
+  &__dot {
+    cursor: default;
+    &:hover,
+    &:focus,
+    &:focus-visible,
+    &:focus-within {
+      background-color: transparent !important;
+      color: #000;
+    }
+  }
+  &__arrow {
+    background-color: #f7f7f7;
+  }
+}
+
+.pg-active {
+  background-color: #ff6b08;
+  color: #fff;
+}
+
+.disabled {
+  opacity: 0.5;
+}
+
+.arrow {
+  fill: none;
+  stroke: #000;
+}
