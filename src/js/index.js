@@ -1,3 +1,5 @@
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth, loginGoogle, logOut } from './firebase.js';
 import {
   loadTrendMovies,
   loadWatchedMovies,
@@ -5,8 +7,6 @@ import {
   loadSameMovies,
 } from './movies.js';
 import { toggleModal } from './modal-info.js';
-import { auth, loginGoogle, logOut } from './firebase.js';
-import { onAuthStateChanged } from 'firebase/auth';
 
 document.addEventListener('DOMContentLoaded', e => {
   e.preventDefault();
@@ -75,16 +75,13 @@ document.addEventListener('DOMContentLoaded', e => {
   });
 
   onAuthStateChanged(auth, user => {
-    console.log('entra');
     if (user !== null) {
-      console.log(user.uid);
       gBtn.classList.add('is-hidden');
       logOutBtn.classList.remove('is-hidden');
     } else {
       libraryBtn.classList.add('is-hidden');
       gBtn.classList.remove('is-hidden');
       logOutBtn.classList.add('is-hidden');
-      console.log('not logged');
     }
   });
 });
