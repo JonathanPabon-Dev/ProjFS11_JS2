@@ -107,6 +107,14 @@ refs.modal.addEventListener('click', event => {
 export function removeModal() {
   refs.modal.classList.add('is-hidden');
   refs.modal.classList.remove('flex-modal');
+  refs.poster.src = new URL('../images/not-found.jpg', import.meta.url);
+  refs.vote.textContent = 'none';
+  refs.votes.textContent = 'none';
+  refs.ogTitle.textContent = 'none';
+  refs.popularity.textContent = 'none';
+  refs.movieTitle.textContent = 'none';
+  refs.sinopsis.textContent = 'none';
+  refs.genre.textContent = 'none';
   refs.btnWatched.removeEventListener('click', refs.addIdToWatched);
   refs.btnQueued.removeEventListener('click', refs.addIdToQueue);
 }
