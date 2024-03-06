@@ -123,23 +123,30 @@ const createMovie = async (movieObject, list) => {
   console.log('Document written with ID: ', docRef.id);
 };
 
-const deleteMovie = async taskId => {
-  await deleteDoc(doc(db, 'movie', taskId));
+const deleteMovieWatched = async taskId => {
+  await deleteDoc(doc(db, 'watched', taskId));
   console.log('deleted');
 };
 
-const getMovies = async list => {
-  if (list == 1) {
-    const q = query(
-      collection(db, 'movie'),
-      where('user_id', '==', auth.currentUser.uid)
-    );
-  } else if (list == 0) {
-    const q = query(
-      collection(db, 'movie'),
-      where('user_id', '==', auth.currentUser.uid)
-    );
-  }
+const deleteMovieQueued = async taskId => {
+  await deleteDoc(doc(db, 'queued', taskId));
+  console.log('deleted');
+};
+
+const getMoviesWatched = async () => {
+  const q = query(
+    collection(db, 'watched'),
+    where('user_id', '==', auth.currentUser.uid)
+  );
+  const querySnapshot = await getDocs(q);
+  return querySnapshot;
+};
+
+const getMoviesQueued = async () => {
+  const q = query(
+    collection(db, 'queued'),
+    where('user_id', '==', auth.currentUser.uid)
+  );
   const querySnapshot = await getDocs(q);
   return querySnapshot;
 };
@@ -148,7 +155,8 @@ export {
   logOut,
   loginGoogle,
   createMovie,
-  getMovies,
+  getMoviesWatched,
+  getMoviesQueued,
   deleteMovie,
   checkUserAuth,
   auth,

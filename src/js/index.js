@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', e => {
   const watchedBtn = document.querySelector('#watched-btn');
   const queueBtn = document.querySelector('#queue-btn');
   const movieContainer = document.querySelector('#movie-container');
-  const gBtn = document.querySelector('button[sign-up-g]');
+  const gBtn = document.querySelector('a[sign-up-g]');
   const logOutBtn = document.querySelector('#log-out-btn');
   loadPage();
 
