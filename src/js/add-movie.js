@@ -1,4 +1,5 @@
 import Notiflix from 'notiflix';
+import { createMovie } from './firebase';
 
 export function addToWatched(movie) {
   const watchedList = getWatchedList();
@@ -6,6 +7,7 @@ export function addToWatched(movie) {
     watchedList.map(movie => movie).find(({ id }) => id === movie.id) || null;
   if (findMovie === null) {
     watchedList.push(movie);
+    createMovie(movie, 1);
     localStorage.setItem('watchedList', JSON.stringify(watchedList));
     Notiflix.Notify.success('Movie added to watched list');
   } else {
@@ -19,6 +21,8 @@ export function addToQueue(movie) {
     queueList.map(movie => movie).find(({ id }) => id === movie.id) || null;
   if (findMovie === null) {
     queueList.push(movie);
+    createMovie(movie, 0);
+
     localStorage.setItem('queueList', JSON.stringify(queueList));
     Notiflix.Notify.success('Movie added to queue list');
   } else {

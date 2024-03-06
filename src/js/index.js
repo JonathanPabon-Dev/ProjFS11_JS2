@@ -5,6 +5,8 @@ import {
   loadSameMovies,
 } from './movies.js';
 import { toggleModal } from './modal-info.js';
+import { auth, loginGoogle, logOut } from './firebase.js';
+import { onAuthStateChanged } from 'firebase/auth';
 
 document.addEventListener('DOMContentLoaded', e => {
   e.preventDefault();
@@ -17,9 +19,12 @@ document.addEventListener('DOMContentLoaded', e => {
   const watchedBtn = document.querySelector('#watched-btn');
   const queueBtn = document.querySelector('#queue-btn');
   const movieContainer = document.querySelector('#movie-container');
-
+  const gBtn = document.querySelector('button[sign-up-g]');
+  const logOutBtn = document.querySelector('#log-out-btn');
   loadPage();
 
+  gBtn.addEventListener('click', loginGoogle);
+  logOutBtn.addEventListener('click', logOut);
   function loadPage() {
     loadTrendMovies();
   }
@@ -67,5 +72,19 @@ document.addEventListener('DOMContentLoaded', e => {
 
     const query = document.querySelector('.header__searcher').value;
     loadSameMovies(query);
+  });
+
+  onAuthStateChanged(auth, user => {
+    console.log('entra');
+    if (user !== null) {
+      console.log(user.uid);
+      gBtn.classList.add('is-hidden');
+      logOutBtn.classList.remove('is-hidden');
+    } else {
+      libraryBtn.classList.add('is-hidden');
+      gBtn.classList.remove('is-hidden');
+      logOutBtn.classList.add('is-hidden');
+      console.log('not logged');
+    }
   });
 });
