@@ -1,3 +1,5 @@
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth, loginGoogle, logOut } from './firebase.js';
 import {
   loadTrendMovies,
   loadWatchedMovies,
@@ -17,9 +19,12 @@ document.addEventListener('DOMContentLoaded', e => {
   const watchedBtn = document.querySelector('#watched-btn');
   const queueBtn = document.querySelector('#queue-btn');
   const movieContainer = document.querySelector('#movie-container');
-
+  const gBtn = document.querySelector('a[sign-up-g]');
+  const logOutBtn = document.querySelector('#log-out-btn');
   loadPage();
 
+  gBtn.addEventListener('click', loginGoogle);
+  logOutBtn.addEventListener('click', logOut);
   function loadPage() {
     loadTrendMovies();
   }
@@ -67,5 +72,22 @@ document.addEventListener('DOMContentLoaded', e => {
 
     const query = document.querySelector('.header__searcher').value;
     loadSameMovies(query);
+  });
+
+  onAuthStateChanged(auth, user => {
+    if (user !== null) {
+      gBtn.classList.add('is-hidden');
+      logOutBtn.classList.remove('is-hidden');
+    } else {
+      libraryBtn.classList.add('is-hidden');
+      gBtn.classList.remove('is-hidden');
+      logOutBtn.classList.add('is-hidden');
+      header.classList.remove('header-library');
+      homeBtn.classList.add('active');
+      libraryBtn.classList.remove('active');
+      headerBtns.classList.add('is-hidden');
+      headerSearch.classList.remove('is-hidden');
+      loadTrendMovies();
+    }
   });
 });

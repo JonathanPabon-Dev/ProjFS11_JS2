@@ -1,9 +1,9 @@
 import { fetchGenres, fetchTrendMovies, fetchSameMovies } from './api.js';
+import { getMoviesQueued, getMoviesWatched } from './firebase.js';
 import { getWatchedList, getQueueList } from './add-movie.js';
 import { showLoader, hideLoader } from './loader.js';
 import { renderPaginator } from './pagination.js';
 import Notiflix from 'notiflix';
-
 let genres = [];
 const paginatorContainer = document.querySelector('.pg-container');
 
@@ -31,24 +31,28 @@ export async function loadSameMovies(query, page = 1) {
     .catch(error => Notiflix.Notify.failure(error));
 }
 
-export function loadWatchedMovies() {
+export async function loadWatchedMovies() {
   showLoader();
-  const watchedList = getWatchedList();
+  let moviesWatchedFirebase = await getMoviesWatched();
+  let watchedList = [];
+  moviesWatchedFirebase.forEach(doc => watchedList.push(doc.data()));
   renderMovieGallery(watchedList);
-  if (watchedList.length === 0) {
+  if (moviesWatchedFirebase.length === 0) {
     Notiflix.Notify.failure('No watched movies found!');
-  } else if (watchedList.length > 20) {
-    renderPaginator(1, watchedList.length);
+  } else if (moviesWatchedFirebase.length > 20) {
+    renderPaginator(1, moviesWatchedFirebase.length);
   }
 }
 
-export function loadQueueMovies() {
+export async function loadQueueMovies() {
   showLoader();
-  const queueList = getQueueList();
-  if (queueList.length === 0) {
+  let moviesQueuedFirebase = await getMoviesQueued();
+  let queuedList = [];
+  moviesQueuedFirebase.forEach(doc => queuedList.push(doc.data()));
+  if (queuedList.length === 0) {
     Notiflix.Notify.failure('No queue movies found!');
   }
-  renderMovieGallery(queueList);
+  renderMovieGallery(queuedList);
 }
 
 async function renderMovieGallery(dataMovies) {

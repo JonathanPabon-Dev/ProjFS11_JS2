@@ -109,7 +109,6 @@ export function loadPaginator(currentPage, totalResults) {
       }
 
       renderPaginator(currentPage, totalResults);
-      console.log(button);
     });
   });
 }

@@ -1,21 +1,31 @@
 import Notiflix from 'notiflix';
+import {
+  createMovie,
+  getMovies,
+  getMoviesQueued,
+  getMoviesWatched,
+} from './firebase';
 
-export function addToWatched(movie) {
-  let watchedList = getWatchedList();
-  if (!watchedList.includes(movie)) {
-    watchedList.push(movie);
-    localStorage.setItem('watchedList', JSON.stringify(watchedList));
+export async function addToWatched(movie) {
+  let moviesArray = [];
+  const movies = await getMoviesWatched();
+  movies.forEach(doc => moviesArray.push(doc.data().id));
+  const findMovie = moviesArray.find(id => id === movie.id) || null;
+  if (findMovie === null) {
+    createMovie(movie, 1);
     Notiflix.Notify.success('Movie added to watched list');
   } else {
     Notiflix.Notify.warning('Movie is already in the watched list');
   }
 }
 
-export function addToQueue(movie) {
-  let queueList = getQueueList();
-  if (!queueList.includes(movie)) {
-    queueList.push(movie);
-    localStorage.setItem('queueList', JSON.stringify(queueList));
+export async function addToQueue(movie) {
+  let moviesArray = [];
+  const movies = await getMoviesQueued();
+  movies.forEach(doc => moviesArray.push(doc.data().id));
+  const findMovie = moviesArray.find(id => id === movie.id) || null;
+  if (findMovie === null) {
+    createMovie(movie, 0);
     Notiflix.Notify.success('Movie added to queue list');
   } else {
     Notiflix.Notify.warning('Movie is already in the queue list');
