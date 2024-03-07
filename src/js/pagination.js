@@ -45,6 +45,7 @@ export function renderPaginator(
       button.textContent = '';
       button.classList.add('pg-btn');
       button.type = 'button';
+      button.value = item.value;
       if (item.value === 'Prev') {
         button.id = 'prev-btn';
         button.classList.add('pg-btn__arrow');
@@ -80,35 +81,13 @@ export function renderPaginator(
       paginatorContainer.appendChild(dot);
     }
   });
-
-  loadPaginator(currentPage, totalResults);
 }
 
-// function resizePaginator(totalPages, currentPage) {
-//   const screenWidth = window.innerWidth;
-
-//   if (screenWidth >= 768) {
-//     renderPaginator(currentPage, totalResults, (moviesPerPage = 20));
-//   } else {
-//     renderPaginator(currentPage, totalResults, (moviesPerPage = 20), true);
-//   }
-//   loadPaginator(totalPages, currentPage);
-// }
-
-// window.addEventListener('resize', resizePaginator(totalPages, currentPage));
-
-export function loadPaginator(currentPage, totalResults) {
-  document.querySelectorAll('.pg-btn').forEach(button => {
-    button.addEventListener('click', async () => {
-      if (button.id === 'prev-btn') {
-        currentPage--;
-      } else if (button.id === 'next-btn') {
-        currentPage++;
-      } else {
-        currentPage = Number(button.textContent);
-      }
-
-      renderPaginator(currentPage, totalResults);
-    });
-  });
+export function resizePaginator(totalResults, currentPage) {
+  const screenWidth = window.innerWidth;
+  if (screenWidth >= 768) {
+    renderPaginator(currentPage, totalResults);
+  } else {
+    renderPaginator(currentPage, totalResults, (mobile = true));
+  }
 }

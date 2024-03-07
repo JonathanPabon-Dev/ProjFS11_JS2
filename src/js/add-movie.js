@@ -1,10 +1,5 @@
 import Notiflix from 'notiflix';
-import {
-  createMovie,
-  getMovies,
-  getMoviesQueued,
-  getMoviesWatched,
-} from './firebase';
+import { createMovie, getMoviesQueued, getMoviesWatched } from './firebase';
 
 export async function addToWatched(movie) {
   let moviesArray = [];
