@@ -59,6 +59,18 @@ window.onkeydown = function(event) {
   }
 }
 
+document.getElementById("nextPage").onclick = function() {
+  if (currentPage < numPages) {
+    currentPage++;
+    showStudents(currentPage);
+    // Habilitar el botón "prevPage"
+    document.getElementById("prevPage").disabled = false;
+  } else {
+    // Deshabilitar el botón "nextPage"
+    document.getElementById("nextPage").disabled = true;
+  }
+};
+
 // Manejar clics en los botones de paginación
 document.getElementById("prevPage").onclick = function() {
   if (currentPage > 1) {
@@ -72,14 +84,4 @@ document.getElementById("prevPage").onclick = function() {
   }
 };
 
-document.getElementById("nextPage").onclick = function() {
-  if (currentPage < numPages) {
-    currentPage++;
-    showStudents(currentPage);
-    // Habilitar el botón "prevPage"
-    document.getElementById("prevPage").disabled = false;
-  } else {
-    // Deshabilitar el botón "nextPage"
-    document.getElementById("nextPage").disabled = true;
-  }
-};
+
