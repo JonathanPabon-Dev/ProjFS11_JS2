@@ -8,20 +8,20 @@ import {
 } from './movies.js';
 import { toggleModal } from './modal-info.js';
 
+const header = document.querySelector('.header');
+const form = document.querySelector('.form');
+const searcher = document.querySelector('input');
+const homeBtn = document.querySelector('#homeBtn');
+const libraryBtn = document.querySelector('#libraryBtn');
+const headerSearch = document.querySelector('.headerSearch');
+const headerBtns = document.querySelector('.headerBtns');
+const watchedBtn = document.querySelector('#watched-btn');
+const queueBtn = document.querySelector('#queue-btn');
+const movieContainer = document.querySelector('#movie-container');
+const gBtn = document.querySelector('a[sign-up-g]');
+const logOutBtn = document.querySelector('#log-out-btn');
 document.addEventListener('DOMContentLoaded', e => {
   e.preventDefault();
-  const header = document.querySelector('.header');
-  const form = document.querySelector('.form');
-  const searcher = document.querySelector('input');
-  const homeBtn = document.querySelector('#homeBtn');
-  const libraryBtn = document.querySelector('#libraryBtn');
-  const headerSearch = document.querySelector('.headerSearch');
-  const headerBtns = document.querySelector('.headerBtns');
-  const watchedBtn = document.querySelector('#watched-btn');
-  const queueBtn = document.querySelector('#queue-btn');
-  const movieContainer = document.querySelector('#movie-container');
-  const gBtn = document.querySelector('a[sign-up-g]');
-  const logOutBtn = document.querySelector('#log-out-btn');
   loadPage();
 
   gBtn.addEventListener('click', loginGoogle);
@@ -96,3 +96,22 @@ document.addEventListener('DOMContentLoaded', e => {
     }
   });
 });
+export function renderLibraryHeader(index = 0) {
+  if (index == 0) {
+    header.classList.add('header-library');
+    libraryBtn.classList.add('active');
+    homeBtn.classList.remove('active');
+    watchedBtn.classList.add('library-header__button--active');
+    queueBtn.classList.remove('library-header__button--active');
+    headerSearch.classList.add('is-hidden');
+    headerBtns.classList.remove('is-hidden');
+  } else {
+    header.classList.add('header-library');
+    libraryBtn.classList.add('active');
+    homeBtn.classList.remove('active');
+    watchedBtn.classList.remove('library-header__button--active');
+    queueBtn.classList.add('library-header__button--active');
+    headerSearch.classList.add('is-hidden');
+    headerBtns.classList.remove('is-hidden');
+  }
+}
