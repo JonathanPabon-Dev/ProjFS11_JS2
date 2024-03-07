@@ -33,6 +33,9 @@
   inset: 0;
   background-color: rgba(0, 0, 0, 0.5);
   animation: bg-transition 1s;
+  justify-content: center;
+  align-items: center;
+  display: flex;
 }
 
 .modal-content {
@@ -40,13 +43,8 @@
   padding: 20px;
   border-radius: 10px;
   border: 2px solid $gray-font;
-  animation: zoom 2s;
+  animation: zoom 0.4s;
   position: relative;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); 
-  width: fit-content; 
-  max-width: 80%
 }
 
 .modal_title {
@@ -115,7 +113,6 @@
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5);
   &:hover,
   &:focus {
-    cursor: pointer;
     transform: scale(1.03);
     box-shadow: 0px 5px 10px rgb(137, 106, 49);
     transition: $transition-ease;
@@ -168,5 +165,11 @@
 @media screen and (min-width: 768px) {
   .modal-content {
     max-width: 512px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .modal-content {
+    margin: 20px;
   }
 }
