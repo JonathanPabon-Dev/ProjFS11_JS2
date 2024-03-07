@@ -13,7 +13,7 @@
 }
 
 .header__container-library {
-  padding: 40px 70px 10px 70px;
+  padding: 40px 71px 10px 71px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -49,9 +49,15 @@
   margin-bottom: 20px;
 }
 
-@media (max-width: 470px) {
+@media (max-width: 768px) {
   .header__container-library {
-    padding: 40px 50px 30px 50px;
+    padding: 40px 75px 30px 75px;
+  }
+}
+
+@media (max-width: 475px) {
+  .header__container-library {
+    padding: 40px 20px 30px 20px;
   }
 
   .library-header__buttons-list {
