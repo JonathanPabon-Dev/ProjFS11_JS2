@@ -1,23 +1,41 @@
 import Notiflix from 'notiflix';
+import {
+  createMovie,
+  getMovies,
+  getMoviesQueued,
+  getMoviesWatched,
+} from './firebase';
 
-export function addToWatched(movieId) {
-  let watchedList = JSON.parse(localStorage.getItem('watchedList')) || [];
-  if (!watchedList.includes(movieId)) {
-    watchedList.push(movieId);
-    localStorage.setItem('watchedList', JSON.stringify(watchedList));
-    Notiflix.Notify.success('Película agregada a la lista de espera');
+export async function addToWatched(movie) {
+  let moviesArray = [];
+  const movies = await getMoviesWatched();
+  movies.forEach(doc => moviesArray.push(doc.data().id));
+  const findMovie = moviesArray.find(id => id === movie.id) || null;
+  if (findMovie === null) {
+    createMovie(movie, 1);
+    Notiflix.Notify.success('Movie added to watched list');
   } else {
-    Notiflix.Notify.warning('Esta película ya está en la lista de espera');
+    Notiflix.Notify.warning('Movie is already in the watched list');
   }
 }
 
-export function addToQueue(movieId) {
-  let queueList = JSON.parse(localStorage.getItem('queueList')) || [];
-  if (!queueList.includes(movieId)) {
-    queueList.push(movieId);
-    localStorage.setItem('queueList', JSON.stringify(queueList));
-    Notiflix.Notify.success('Película agregada a la lista de espera');
+export async function addToQueue(movie) {
+  let moviesArray = [];
+  const movies = await getMoviesQueued();
+  movies.forEach(doc => moviesArray.push(doc.data().id));
+  const findMovie = moviesArray.find(id => id === movie.id) || null;
+  if (findMovie === null) {
+    createMovie(movie, 0);
+    Notiflix.Notify.success('Movie added to queue list');
   } else {
-    Notiflix.Notify.warning('Esta película ya está en la lista de espera');
+    Notiflix.Notify.warning('Movie is already in the queue list');
   }
+}
+
+export function getWatchedList() {
+  return JSON.parse(localStorage.getItem('watchedList')) || [];
+}
+
+export function getQueueList() {
+  return JSON.parse(localStorage.getItem('queueList')) || [];
 }
