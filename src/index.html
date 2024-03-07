@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8" />
@@ -9,27 +9,15 @@
     <link rel="stylesheet" href="./sass/cards.min.css" />
     <link rel="stylesheet" href="./sass/modal.css" />
     <script type="module" src="./js/index.js"></script>
+    <link rel="stylesheet" href="../node_modules/notiflix/dist/notiflix-3.2.7.min.css" />
 </head>
 
 <body>
-    <section class="movies">
-        <div id="filter-container">
-            <label for="genre-select">Filter by Genre:</label>
-            <select id="genre-select"></select>
-        </div>
-        <ul id="movie-container"></ul>
-    </section>
-
-    <div id="modal" class="modal">
-        <div class="modal-content">
-            <span id="close-modal" class="close">&times;</span>
-            <h2 id="modal-title"></h2>
-            <p id="modal-overview"></p>
-            <button id="add-to-watched">Add to Watched</button>
-            <button id="add-to-queue">Add to Queue</button>
-        </div>
-    </div>
-
+    <!-- <include src="./partials/example.html"></include> -->
+    <include src="./partials/example.html"></include>
+    <!-- ❗️❗️❗️ Add partials like so for every page -->
+    <include src="./partials/footer.html"></include>
+    <!-- Contenedor para cargar el modal -->
     <!-- JavaScript -->
     <script src="./js/footer.js"></script>
     <script src="./js/cards.js"></script>
