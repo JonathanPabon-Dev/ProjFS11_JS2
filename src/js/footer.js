@@ -45,6 +45,32 @@ span.onclick = function() {
   modal.style.display = "none";
 }
 
+// Cerrar el modal cuando se hace clic fuera de él
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+// Cerrar el modal cuando se presiona la tecla Escape
+window.onkeydown = function(event) {
+  if (event.key === "Escape") {
+    modal.style.display = "none";
+  }
+}
+
+document.getElementById("nextPage").onclick = function() {
+  if (currentPage < numPages) {
+    currentPage++;
+    showStudents(currentPage);
+    // Habilitar el botón "prevPage"
+    document.getElementById("prevPage").disabled = false;
+  } else {
+    // Deshabilitar el botón "nextPage"
+    document.getElementById("nextPage").disabled = true;
+  }
+};
+
 // Manejar clics en los botones de paginación
 document.getElementById("prevPage").onclick = function() {
   if (currentPage > 1) {
@@ -58,14 +84,4 @@ document.getElementById("prevPage").onclick = function() {
   }
 };
 
-document.getElementById("nextPage").onclick = function() {
-  if (currentPage < numPages) {
-    currentPage++;
-    showStudents(currentPage);
-    // Habilitar el botón "prevPage"
-    document.getElementById("prevPage").disabled = false;
-  } else {
-    // Deshabilitar el botón "nextPage"
-    document.getElementById("nextPage").disabled = true;
-  }
-};
+
