@@ -34,7 +34,7 @@ showStudents(currentPage);
 // Manejar el clic en el enlace GoIT Students
 goitLink.onclick = function (event) {
   event.preventDefault(); // Evitar el comportamiento predeterminado del enlace
-  modal.style.display = "block";
+  modal.classList.remove('is-hidden');
 }
 
 // Obtiener el elemento de cierre del modal
