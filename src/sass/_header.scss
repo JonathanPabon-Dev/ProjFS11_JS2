@@ -25,7 +25,7 @@
 .header__container {
   max-width: 882px;
   margin: 0 auto;
-  padding: 40px 70px 30px 70px;
+  padding: 40px 71px 30px 71px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -109,29 +109,15 @@
   background-color: transparent;
 }
 
-@media (min-width: 471px) and (max-width: 768px) {
-  .header {
-    background-image: linear-gradient(
-        to bottom,
-        rgba(26, 26, 31, 0.5) 20%,
-        rgba(0, 0, 0, 0.56) 90%
-      ),
-      url(../images/header2.jpg);
+@media  (max-width:768px) {
+  .header__container {
+      padding: 40px 75px 30px 75px;
   }
 }
 
 @media (max-width: 470px) {
   .header__container {
-    padding: 40px 50px 30px 50px;
-  }
-
-  .header {
-    background-image: linear-gradient(
-        to bottom,
-        rgba(26, 26, 31, 0.5) 20%,
-        rgba(0, 0, 0, 0.56) 90%
-      ),
-      url(../images/header3.jpg);
+    padding: 40px 20px 30px 20px;
   }
 
   .header__page-name {
