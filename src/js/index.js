@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', e => {
   e.preventDefault();
   const header = document.querySelector('.header');
   const form = document.querySelector('.form');
+  const searcher = document.querySelector('input');
   const homeBtn = document.querySelector('#homeBtn');
   const libraryBtn = document.querySelector('#libraryBtn');
   const headerSearch = document.querySelector('.headerSearch');
@@ -27,6 +28,8 @@ document.addEventListener('DOMContentLoaded', e => {
   logOutBtn.addEventListener('click', logOut);
   function loadPage() {
     loadTrendMovies();
+    searcher.textContent = '';
+    searcher.value = '';
   }
 
   homeBtn.addEventListener('click', () => {
@@ -36,6 +39,8 @@ document.addEventListener('DOMContentLoaded', e => {
     headerBtns.classList.add('is-hidden');
     headerSearch.classList.remove('is-hidden');
     loadTrendMovies();
+    searcher.textContent = '';
+    searcher.value = '';
   });
 
   libraryBtn.addEventListener('click', () => {

@@ -68,16 +68,16 @@ export function toggleModal(id) {
       } else {
         refs.poster.src = new URL('../images/not-found.jpg', import.meta.url);
       }
-      refs.vote.textContent = response.vote_average || 'none';
-      refs.votes.textContent = response.vote_count || 'none';
-      refs.ogTitle.textContent = response.original_title || 'none';
-      refs.popularity.textContent = response.popularity || 'none';
-      refs.movieTitle.textContent = response.title || 'none';
-      refs.sinopsis.textContent = response.overview || 'none';
+      refs.vote.textContent = response.vote_average.toFixed(1) || 'None';
+      refs.votes.textContent = response.vote_count || 'None';
+      refs.ogTitle.textContent = response.original_title || 'None';
+      refs.popularity.textContent = response.popularity.toFixed(1) || 'None';
+      refs.movieTitle.textContent = response.title || 'None';
+      refs.sinopsis.textContent = response.overview || 'None';
       refs.genre.textContent =
         response.genres.map(({ name }) => name).length > 0
           ? response.genres.map(({ name }) => name).join(', ')
-          : 'none';
+          : 'None';
       refs.btnWatched.value = response.id;
       refs.btnQueued.value = response.id;
       refs.movie = new movieObject(
@@ -107,6 +107,14 @@ refs.modal.addEventListener('click', event => {
 export function removeModal() {
   refs.modal.classList.add('is-hidden');
   refs.modal.classList.remove('flex-modal');
+  refs.poster.src = new URL('../images/not-found.jpg', import.meta.url);
+  refs.vote.textContent = 'none';
+  refs.votes.textContent = 'none';
+  refs.ogTitle.textContent = 'none';
+  refs.popularity.textContent = 'none';
+  refs.movieTitle.textContent = 'none';
+  refs.sinopsis.textContent = 'none';
+  refs.genre.textContent = 'none';
   refs.btnWatched.removeEventListener('click', refs.addIdToWatched);
   refs.btnQueued.removeEventListener('click', refs.addIdToQueue);
 }
