@@ -35,7 +35,7 @@ showStudents(currentPage);
 goitLink.onclick = function (event) {
   event.preventDefault(); // Evitar el comportamiento predeterminado del enlace
   modal.classList.remove('is-hidden');
-};
+}
 
 // Obtiener el elemento de cierre del modal
 var span = document.getElementsByClassName('close')[0];
