@@ -37,7 +37,7 @@
   &:hover {
     cursor: pointer;
     stroke: $orange-primary;
-    transition: stroke 0.5s $cubic;
+    transition: stroke 250ms $cubic;
   }
 }
 .text {
@@ -77,7 +77,7 @@
   border-radius: 4px;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 2px 1px rgba(0, 0, 0, 0.2);
-  animation: zoom 2s;
+  animation: zoom 250ms;
   @media screen and (max-width: 767px) {
     height: 80%;
     overflow-y: scroll;

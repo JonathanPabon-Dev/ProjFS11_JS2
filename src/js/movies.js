@@ -27,27 +27,37 @@ export async function loadSameMovies(query, page) {
   return total_movies;
 }
 
-export async function loadWatchedMovies(page) {
+export async function loadWatchedMovies(page, moviesPerPage) {
   showLoader();
   let moviesWatchedFirebase = await getMoviesWatched();
   let watchedList = [];
   moviesWatchedFirebase.forEach(doc => watchedList.push(doc.data()));
-  renderMovieGallery(watchedList);
+
+  let start = (page - 1) * moviesPerPage;
+  let end = Math.min(page * moviesPerPage, watchedList.length);
+  let moviesPagination = watchedList.slice(start, end);
+
+  renderMovieGallery(moviesPagination);
   if (moviesWatchedFirebase.length === 0) {
     Notiflix.Notify.failure('No watched movies found!');
   }
   return watchedList.length;
 }
 
-export async function loadQueueMovies(page) {
+export async function loadQueueMovies(page, moviesPerPage) {
   showLoader();
   let moviesQueuedFirebase = await getMoviesQueued();
   let queuedList = [];
   moviesQueuedFirebase.forEach(doc => queuedList.push(doc.data()));
+
+  let start = (page - 1) * moviesPerPage;
+  let end = Math.min(page * moviesPerPage, queuedList.length);
+  let moviesPagination = queuedList.slice(start, end);
+
+  renderMovieGallery(moviesPagination);
   if (queuedList.length === 0) {
     Notiflix.Notify.failure('No queue movies found!');
   }
-  renderMovieGallery(queuedList);
   return queuedList.length;
 }
 
