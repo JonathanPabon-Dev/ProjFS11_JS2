@@ -4,7 +4,7 @@ export function renderPaginator(
   moviesPerPage = 20,
   mobile = false
 ) {
-  totalPages = Math.ceil(totalResults / moviesPerPage);
+  const totalPages = Math.ceil(totalResults / moviesPerPage);
   const paginatorContainer = document.querySelector('.pg-container');
   paginatorContainer.innerHTML = '';
 
