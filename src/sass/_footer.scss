@@ -1,21 +1,28 @@
 .footer {
-  background-color: $gray-footer-bg;
-  width: 100%;
-  height: 77px;
-  text-align: center;
   display: grid;
+  text-align: center;
   place-items: center;
+  background-color: $gray-footer-bg;
+  color: $gray-font;
+  padding: 30px 36px;
   .text {
-    color: $gray-font;
+    font-size: 14px;
+    font-weight: 400;
+    text-align: center;
     align-items: center;
+    @media screen and (min-width: 768px) {
+      font-weight: 16px;
+    }
     .text_link {
+      cursor: pointer;
       color: $gray-font;
       text-decoration: underline;
-      &:hover,
-      &:focus {
+      &:hover {
         color: $orange-primary;
         transition: $transition-ease;
-        cursor: pointer;
+      }
+      &:visited {
+        color: $gray-font;
       }
     }
     .svg-close-modal {

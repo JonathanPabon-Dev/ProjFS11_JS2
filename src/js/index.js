@@ -14,6 +14,7 @@ const header = document.querySelector('.header');
 const form = document.querySelector('.form');
 const searcher = document.querySelector('input');
 const homeBtn = document.querySelector('#homeBtn');
+const libraryItem = document.querySelector('#library');
 const libraryBtn = document.querySelector('#libraryBtn');
 const headerSearch = document.querySelector('.headerSearch');
 const headerBtns = document.querySelector('.headerBtns');
@@ -161,12 +162,12 @@ document.addEventListener('DOMContentLoaded', e => {
       gBtn.classList.add('is-hidden');
       logOutBtn.classList.remove('is-hidden');
     } else {
-      libraryBtn.classList.add('is-hidden');
+      library.classList.add('is-hidden');
       gBtn.classList.remove('is-hidden');
       logOutBtn.classList.add('is-hidden');
       header.classList.remove('header-library');
       homeBtn.classList.add('active');
-      libraryBtn.classList.remove('active');
+      library.classList.remove('active');
       headerBtns.classList.add('is-hidden');
       headerSearch.classList.remove('is-hidden');
       loadPage();
