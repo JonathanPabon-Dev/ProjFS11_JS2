@@ -88,6 +88,6 @@ export function resizePaginator(totalResults, currentPage) {
   if (screenWidth >= 768) {
     renderPaginator(currentPage, totalResults);
   } else {
-    renderPaginator(currentPage, totalResults, (mobile = true));
+    renderPaginator(currentPage, totalResults, 20, true);
   }
 }
