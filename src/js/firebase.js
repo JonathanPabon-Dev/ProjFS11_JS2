@@ -18,7 +18,7 @@ import {
   where,
   getDocs,
 } from 'firebase/firestore';
-
+import { Notify } from 'notiflix';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -46,7 +46,7 @@ auth.languageCode = 'es';
 const logOut = () => {
   signOut(auth)
     .then(() => {
-      console.log('Cierre de sesión correcto');
+      Notify.warning('User logged out successfully');
     })
     .catch(error => {
       console.error(error);
@@ -91,33 +91,41 @@ const checkUserAuth = () => {
 const createMovie = async (movieObject, list) => {
   let docRef = '';
   if (list == 1) {
-    docRef = await addDoc(collection(db, 'watched'), {
-      id: movieObject.id,
-      poster_path: movieObject.poster_path,
-      title: movieObject.title,
-      vote_average: movieObject.vote_average,
-      vote_count: movieObject.vote_count,
-      original_title: movieObject.original_title,
-      popularity: movieObject.popularity,
-      overview: movieObject.overview,
-      genre_ids: movieObject.genre_ids,
-      release_date: movieObject.release_date,
-      user_id: auth.currentUser.uid,
-    });
+    try {
+      docRef = await addDoc(collection(db, 'watched'), {
+        id: movieObject.id,
+        poster_path: movieObject.poster_path,
+        title: movieObject.title,
+        vote_average: movieObject.vote_average,
+        vote_count: movieObject.vote_count,
+        original_title: movieObject.original_title,
+        popularity: movieObject.popularity,
+        overview: movieObject.overview,
+        genre_ids: movieObject.genre_ids,
+        release_date: movieObject.release_date,
+        user_id: auth.currentUser.uid,
+      });
+    } catch {
+      Notify.failure('Ha ocurrido un error');
+    }
   } else if (list == 0) {
-    docRef = await addDoc(collection(db, 'queued'), {
-      id: movieObject.id,
-      poster_path: movieObject.poster_path,
-      title: movieObject.title,
-      vote_average: movieObject.vote_average,
-      vote_count: movieObject.vote_count,
-      original_title: movieObject.original_title,
-      popularity: movieObject.popularity,
-      overview: movieObject.overview,
-      genre_ids: movieObject.genre_ids,
-      release_date: movieObject.release_date,
-      user_id: auth.currentUser.uid,
-    });
+    try {
+      docRef = await addDoc(collection(db, 'queued'), {
+        id: movieObject.id,
+        poster_path: movieObject.poster_path,
+        title: movieObject.title,
+        vote_average: movieObject.vote_average,
+        vote_count: movieObject.vote_count,
+        original_title: movieObject.original_title,
+        popularity: movieObject.popularity,
+        overview: movieObject.overview,
+        genre_ids: movieObject.genre_ids,
+        release_date: movieObject.release_date,
+        user_id: auth.currentUser.uid,
+      });
+    } catch (error) {
+      Notify.failure(error.code);
+    }
   }
 };
 
@@ -130,18 +138,44 @@ const deleteMovieQueued = async taskId => {
 };
 
 const getMoviesWatched = async () => {
+  if (auth.currentUser !== null) {
+    const q = query(
+      collection(db, 'watched'),
+      where('user_id', '==', auth.currentUser.uid)
+    );
+    const querySnapshot = await getDocs(q);
+    return querySnapshot;
+  }
+  Notify.warning('To add Movie please sign up');
+};
+
+const getMoviesWatchedById = async id => {
   const q = query(
     collection(db, 'watched'),
-    where('user_id', '==', auth.currentUser.uid)
+    where('user_id', '==', auth.currentUser.uid),
+    where('id', '==', id)
   );
   const querySnapshot = await getDocs(q);
   return querySnapshot;
 };
 
 const getMoviesQueued = async () => {
+  if (auth.currentUser !== null) {
+    const q = query(
+      collection(db, 'queued'),
+      where('user_id', '==', auth.currentUser.uid)
+    );
+    const querySnapshot = await getDocs(q);
+    return querySnapshot;
+  }
+  Notify.warning('To add Movie please sign up');
+};
+
+const getMoviesQueuedById = async id => {
   const q = query(
     collection(db, 'queued'),
-    where('user_id', '==', auth.currentUser.uid)
+    where('user_id', '==', auth.currentUser.uid),
+    where('id', '==', id)
   );
   const querySnapshot = await getDocs(q);
   return querySnapshot;
@@ -152,8 +186,11 @@ export {
   loginGoogle,
   createMovie,
   getMoviesWatched,
+  getMoviesWatchedById,
   getMoviesQueued,
-  deleteMovie,
+  getMoviesQueuedById,
+  deleteMovieWatched,
+  deleteMovieQueued,
   checkUserAuth,
   auth,
 };

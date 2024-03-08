@@ -10,31 +10,32 @@ import { toggleModal } from './modal-info.js';
 import { renderPaginator, resizePaginator } from './pagination.js';
 import Notiflix from 'notiflix';
 
+const header = document.querySelector('.header');
+const form = document.querySelector('.form');
+const searcher = document.querySelector('input');
+const homeBtn = document.querySelector('#homeBtn');
+const libraryBtn = document.querySelector('#libraryBtn');
+const headerSearch = document.querySelector('.headerSearch');
+const headerBtns = document.querySelector('.headerBtns');
+const watchedBtn = document.querySelector('#watched-btn');
+const queueBtn = document.querySelector('#queue-btn');
+const movieContainer = document.querySelector('#movie-container');
+const pgContainer = document.querySelector('.pg-container');
+const gBtn = document.querySelector('a[sign-up-g]');
+const logOutBtn = document.querySelector('#log-out-btn');
+let totalResults = 0;
+let currentPage = 1;
+const Sections = {
+  Trend: 'trend',
+  Same: 'same',
+  Watched: 'watched',
+  Queue: 'queue',
+};
+let section;
+
 document.addEventListener('DOMContentLoaded', e => {
   e.preventDefault();
-  const header = document.querySelector('.header');
-  const form = document.querySelector('.form');
-  const searcher = document.querySelector('input');
-  const homeBtn = document.querySelector('#homeBtn');
-  const libraryBtn = document.querySelector('#libraryBtn');
-  const headerSearch = document.querySelector('.headerSearch');
-  const headerBtns = document.querySelector('.headerBtns');
-  const watchedBtn = document.querySelector('#watched-btn');
-  const queueBtn = document.querySelector('#queue-btn');
-  const movieContainer = document.querySelector('#movie-container');
-  const pgContainer = document.querySelector('.pg-container');
-  const gBtn = document.querySelector('a[sign-up-g]');
-  const logOutBtn = document.querySelector('#log-out-btn');
-  let totalResults = 0;
-  let currentPage = 1;
-  const Sections = {
-    Trend: 'trend',
-    Same: 'same',
-    Watched: 'watched',
-    Queue: 'queue',
-  };
-  let section;
-
+  
   // Cargue inicial
   loadPage();
 
@@ -188,3 +189,22 @@ document.addEventListener('DOMContentLoaded', e => {
 
   window.addEventListener('resize', resizePaginator(totalResults, currentPage));
 });
+export function renderLibraryHeader(index = 0) {
+  if (index == 0) {
+    header.classList.add('header-library');
+    libraryBtn.classList.add('active');
+    homeBtn.classList.remove('active');
+    watchedBtn.classList.add('library-header__button--active');
+    queueBtn.classList.remove('library-header__button--active');
+    headerSearch.classList.add('is-hidden');
+    headerBtns.classList.remove('is-hidden');
+  } else {
+    header.classList.add('header-library');
+    libraryBtn.classList.add('active');
+    homeBtn.classList.remove('active');
+    watchedBtn.classList.remove('library-header__button--active');
+    queueBtn.classList.add('library-header__button--active');
+    headerSearch.classList.add('is-hidden');
+    headerBtns.classList.remove('is-hidden');
+  }
+}
