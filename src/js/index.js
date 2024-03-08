@@ -23,8 +23,11 @@ const movieContainer = document.querySelector('#movie-container');
 const pgContainer = document.querySelector('.pg-container');
 const gBtn = document.querySelector('a[sign-up-g]');
 const logOutBtn = document.querySelector('#log-out-btn');
+const topBtn = document.querySelector('#top-btn');
+
 let totalResults = 0;
 let currentPage = 1;
+let moviesPerPage = 20;
 const Sections = {
   Trend: 'trend',
   Same: 'same',
@@ -35,7 +38,7 @@ let section;
 
 document.addEventListener('DOMContentLoaded', e => {
   e.preventDefault();
-  
+
   // Cargue inicial
   loadPage();
 
@@ -45,13 +48,14 @@ document.addEventListener('DOMContentLoaded', e => {
     (async () => {
       totalResults = await loadTrendMovies(currentPage);
       loadPaginator(currentPage, totalResults);
+      resizePaginator(totalResults, currentPage);
     })();
     searcher.textContent = '';
     searcher.value = '';
   }
 
   function loadPaginator(page, total_results) {
-    if (totalResults > 20) {
+    if (totalResults > moviesPerPage) {
       renderPaginator(page, total_results);
       pgContainer.classList.remove('is-hidden');
     } else {
@@ -69,12 +73,13 @@ document.addEventListener('DOMContentLoaded', e => {
         loadSameMovies(query, currentPage);
         break;
       case Sections.Watched:
-        loadWatchedMovies(currentPage);
+        loadWatchedMovies(currentPage, moviesPerPage);
         break;
       case Sections.Queue:
-        loadQueueMovies(currentPage);
+        loadQueueMovies(currentPage, moviesPerPage);
         break;
       default:
+        loadPage();
         break;
     }
   }
@@ -105,7 +110,7 @@ document.addEventListener('DOMContentLoaded', e => {
     headerBtns.classList.remove('is-hidden');
     currentPage = 1;
     (async () => {
-      totalResults = await loadWatchedMovies(currentPage);
+      totalResults = await loadWatchedMovies(currentPage, moviesPerPage);
       loadPaginator(currentPage, totalResults);
     })();
   });
@@ -116,7 +121,7 @@ document.addEventListener('DOMContentLoaded', e => {
     queueBtn.classList.remove('library-header__button--active');
     currentPage = 1;
     (async () => {
-      totalResults = await loadWatchedMovies(currentPage);
+      totalResults = await loadWatchedMovies(currentPage, moviesPerPage);
       loadPaginator(currentPage, totalResults);
     })();
   });
@@ -127,7 +132,7 @@ document.addEventListener('DOMContentLoaded', e => {
     watchedBtn.classList.remove('library-header__button--active');
     currentPage = 1;
     (async () => {
-      totalResults = await loadQueueMovies(currentPage);
+      totalResults = await loadQueueMovies(currentPage, moviesPerPage);
       loadPaginator(currentPage, totalResults);
     })();
   });
@@ -187,8 +192,26 @@ document.addEventListener('DOMContentLoaded', e => {
     }
   });
 
-  window.addEventListener('resize', resizePaginator(totalResults, currentPage));
+  window.addEventListener('resize', () => {
+    resizePaginator(totalResults, currentPage);
+  });
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 200) {
+      topBtn.classList.remove('is-hidden');
+    } else {
+      topBtn.classList.add('is-hidden');
+    }
+  });
+
+  topBtn.addEventListener('click', () => {
+    window.scroll({
+      top: 0,
+      behavior: 'smooth',
+    });
+  });
 });
+
 export function renderLibraryHeader(index = 0) {
   if (index == 0) {
     header.classList.add('header-library');
