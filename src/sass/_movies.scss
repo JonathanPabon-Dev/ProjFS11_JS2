@@ -30,6 +30,7 @@
   }
   & img {
     height: 398px;
+    cursor: pointer;
     @media screen and (min-width: 320px) {
       width: 280px;
       aspect-ratio: 280/398;
