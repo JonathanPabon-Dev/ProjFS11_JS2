@@ -1,5 +1,6 @@
 import { fetchMovieDetails } from './api';
 import { addToWatched, addToQueue } from './add-movie';
+import { getMoviesQueued, getMoviesWatched } from './firebase';
 
 class movieObject {
   constructor(
@@ -98,6 +99,36 @@ export function toggleModal(id) {
   refs.btnWatched.addEventListener('click', refs.addIdToWatched);
 
   refs.btnQueued.addEventListener('click', refs.addIdToQueue);
+
+  (async () => {
+    let moviesWatchedFirebase = await getMoviesWatched();
+    let moviesQueuedFirebase = await getMoviesQueued();
+    let queuedList = [];
+    let watchedList = [];
+
+    if (moviesWatchedFirebase) {
+      moviesWatchedFirebase.forEach(doc => watchedList.push(doc.data()));
+      const existWatched = watchedList.find(movie => movie.id === id);
+      if (existWatched) {
+        refs.btnWatched.classList.add('modal__button-active');
+        refs.btnWatched.innerText = 'REMOVE FROM WATCHED';
+      } else {
+        refs.btnWatched.classList.remove('modal__button-active');
+        refs.btnWatched.innerText = 'ADD TO WATCHED';
+      }
+    }
+    if (moviesQueuedFirebase) {
+      moviesQueuedFirebase.forEach(doc => queuedList.push(doc.data()));
+      const existQueue = queuedList.find(movie => movie.id === id);
+      if (existQueue) {
+        refs.btnQueued.classList.add('modal__button-active');
+        refs.btnQueued.innerText = 'REMOVE FROM QUEUE';
+      } else {
+        refs.btnQueued.classList.remove('modal__button-active');
+        refs.btnQueued.innerText = 'ADD TO QUEUE';
+      }
+    }
+  })();
 }
 refs.modal.addEventListener('click', event => {
   if (event.target.className !== 'backdrop flex-modal') return;
@@ -117,4 +148,6 @@ export function removeModal() {
   refs.genre.textContent = 'none';
   refs.btnWatched.removeEventListener('click', refs.addIdToWatched);
   refs.btnQueued.removeEventListener('click', refs.addIdToQueue);
+  refs.btnWatched.classList.remove('modal__button-active');
+  refs.btnQueued.classList.remove('modal__button-active');
 }

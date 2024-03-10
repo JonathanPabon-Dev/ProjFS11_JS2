@@ -82,7 +82,7 @@ const checkUserAuth = () => {
       let data = user.uid;
       return data;
     } else {
-      console.log('not logged');
+      console.log('Not logged');
       return;
     }
   });
@@ -106,7 +106,7 @@ const createMovie = async (movieObject, list) => {
         user_id: auth.currentUser.uid,
       });
     } catch {
-      Notify.failure('Ha ocurrido un error');
+      Notify.failure('An error happens');
     }
   } else if (list == 0) {
     try {
@@ -146,7 +146,7 @@ const getMoviesWatched = async () => {
     const querySnapshot = await getDocs(q);
     return querySnapshot;
   }
-  Notify.warning('To add Movie please sign up');
+  Notify.warning('To add movie, please sign up');
 };
 
 const getMoviesWatchedById = async id => {
@@ -168,7 +168,7 @@ const getMoviesQueued = async () => {
     const querySnapshot = await getDocs(q);
     return querySnapshot;
   }
-  Notify.warning('To add Movie please sign up');
+  Notify.warning('To add movie, please sign up');
 };
 
 const getMoviesQueuedById = async id => {

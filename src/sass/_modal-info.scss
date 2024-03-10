@@ -127,12 +127,15 @@
     border-radius: 5px;
     @media screen and (min-width: 320px) {
       width: 240px;
+      aspect-ratio: 240/357;
     }
     @media screen and (min-width: 768px) {
       width: 264px;
+      aspect-ratio: 264/374;
     }
     @media screen and (min-width: 1024px) {
       width: 396px;
+      aspect-ratio: 396/478;
     }
   }
   &__title {
@@ -176,34 +179,46 @@
     z-index: 2;
   }
   &__button {
+    box-sizing: border-box;
+    height: 100%;
     cursor: pointer;
     color: $black-primary;
     background-color: $white;
     text-align: center;
     border: 1px solid $black-primary;
-    padding: 14px 0px;
     border-radius: 5px;
     font-size: 12px;
     font-weight: 500;
     line-height: 1.33;
     letter-spacing: 0.06em;
-    outline: none;
     transition: color 250ms $cubic;
+    &-active,
+    &:hover,
+    &:focus {
+      color: $white;
+      background-color: $orange-primary;
+      border: none;
+    }
+    &-active {
+      &:hover,
+      &:focus {
+        color: $black-primary;
+        background-color: $white;
+        border: 1px solid $black-primary;
+      }
+    }
     @media screen and (min-width: 320px) {
       width: 113px;
+      padding: 14px 8px;
     }
     @media screen and (min-width: 768px) {
       width: 125px;
+      padding: 14px 9px;
     }
     @media screen and (min-width: 1024px) {
       width: 136px;
+      padding: 14px 10px;
     }
-  }
-  &__button-active {
-    color: $white;
-    background-color: $orange-primary;
-    text-align: center;
-    border: 1px solid transparent;
   }
   @media screen and (min-width: 320px) {
     width: 280px;
@@ -215,6 +230,7 @@
     width: 882px;
   }
 }
+
 @keyframes zoom {
   from {
     scale: 0;

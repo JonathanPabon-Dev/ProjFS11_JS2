@@ -1,7 +1,6 @@
 import Notiflix from 'notiflix';
 import {
   createMovie,
-  getMovies,
   getMoviesQueued,
   getMoviesWatched,
   getMoviesWatchedById,
@@ -37,7 +36,9 @@ export async function addToWatched(movie) {
       }, 500);
       Notiflix.Notify.success('Movie removed from watched list');
     }
-  } catch (error) {}
+  } catch (error) {
+    Notiflix.Notify.failure('Action denied. ' + error);
+  }
 }
 
 export async function addToQueue(movie) {
@@ -64,7 +65,9 @@ export async function addToQueue(movie) {
         loadQueueMovies();
       }, 500);
     }
-  } catch (error) {}
+  } catch (error) {
+    Notiflix.Notify.failure('Action denied. ' + error);
+  }
 }
 
 export function getWatchedList() {

@@ -1,6 +1,7 @@
 import { fetchGenres, fetchTrendMovies, fetchSameMovies } from './api.js';
 import { getMoviesQueued, getMoviesWatched } from './firebase.js';
 import { showLoader, hideLoader } from './loader.js';
+import { getSection } from './index.js';
 import Notiflix from 'notiflix';
 
 export async function loadTrendMovies(page) {
@@ -98,6 +99,18 @@ async function renderMovieGallery(dataMovies) {
     releaseYearAndGenres.className = 'release-year-genres';
     releaseYearAndGenres.textContent =
       mainGenres.join(', ') + ' | ' + movie.release_date.substring(0, 4);
+
+    const vote = document.createElement('span');
+    vote.id = 'movie-vote';
+    vote.classList.add('span', 'span--orange');
+    const section = getSection();
+    if (section === 'trend' || section === 'same') {
+      vote.classList.add('is-hidden');
+    }
+    vote.textContent = movie.vote_average.toFixed(1);
+    vote.style.marginLeft = '10px';
+    releaseYearAndGenres.appendChild(vote);
+
     movieLi.appendChild(releaseYearAndGenres);
     movieContainer.appendChild(movieLi);
   });

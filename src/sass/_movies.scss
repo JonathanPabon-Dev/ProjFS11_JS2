@@ -28,13 +28,20 @@
     padding: 0px 71px;
     justify-content: flex-start;
   }
-  img {
-    width: 274px;
+  & img {
     height: 398px;
-    object-fit: cover;
-    border-radius: 5px;
-    aspect-ratio: 2/3;
-    cursor: pointer;
+    @media screen and (min-width: 320px) {
+      width: 280px;
+      aspect-ratio: 280/398;
+    }
+    @media screen and (min-width: 768px) {
+      width: 294px;
+      aspect-ratio: 294/398;
+    }
+    @media screen and (min-width: 1024px) {
+      width: 274px;
+      aspect-ratio: 274/398;
+    }
   }
 }
 
