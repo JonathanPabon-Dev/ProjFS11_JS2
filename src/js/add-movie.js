@@ -10,7 +10,7 @@ import {
 } from './firebase';
 import { loadWatchedMovies, loadQueueMovies } from './movies';
 import { removeModal } from './modal-info';
-import { renderLibraryHeader } from './index';
+import { renderLibraryHeader, getIndexData } from './index';
 
 export async function addToWatched(movie) {
   let moviesArray = [];
@@ -32,7 +32,10 @@ export async function addToWatched(movie) {
       setTimeout(() => {
         removeModal();
         renderLibraryHeader();
-        loadWatchedMovies();
+        loadWatchedMovies(
+          getIndexData().currentPage,
+          getIndexData().moviesPerPage
+        );
       }, 500);
       Notiflix.Notify.success('Movie removed from watched list');
     }
@@ -62,7 +65,10 @@ export async function addToQueue(movie) {
       setTimeout(() => {
         removeModal();
         renderLibraryHeader(1);
-        loadQueueMovies();
+        loadQueueMovies(
+          getIndexData().currentPage,
+          getIndexData().moviesPerPage
+        );
       }, 500);
     }
   } catch (error) {

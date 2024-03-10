@@ -218,3 +218,12 @@ export function renderLibraryHeader(index = 0) {
 export function getSection() {
   return section;
 }
+
+export function getIndexData() {
+  return {
+    totalMovies: totalResults,
+    currentPage: currentPage,
+    moviesPerPage: moviesPerPage,
+    section: section,
+  };
+}
